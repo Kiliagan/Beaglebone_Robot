@@ -204,9 +204,9 @@ int MPU6050::readSensorState(){
 	this->accelerationX = this->combineRegisters(*(registers+ACCEL_XOUT_H), *(registers+ACCEL_XOUT_L));
 	this->accelerationY = this->combineRegisters(*(registers+ACCEL_YOUT_H), *(registers+ACCEL_YOUT_L));
 	this->accelerationZ = this->combineRegisters(*(registers+ACCEL_ZOUT_H), *(registers+ACCEL_ZOUT_L));
-	this->accelerationX = this->combineRegisters(*(registers+GYRO_XOUT_H), *(registers+GYRO_XOUT_L));
-	this->accelerationY = this->combineRegisters(*(registers+GYRO_YOUT_H), *(registers+GYRO_YOUT_L));
-	this->accelerationZ = this->combineRegisters(*(registers+GYRO_ZOUT_H), *(registers+GYRO_ZOUT_L));
+	this->gyroX = this->combineRegisters(*(registers+GYRO_XOUT_H), *(registers+GYRO_XOUT_L));
+	this->gyroY = this->combineRegisters(*(registers+GYRO_YOUT_H), *(registers+GYRO_YOUT_L));
+	this->gyroZ = this->combineRegisters(*(registers+GYRO_ZOUT_H), *(registers+GYRO_ZOUT_L));
 	this->calculatePitchAndRoll();
 	return 0;
 }

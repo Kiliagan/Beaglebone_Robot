@@ -12,7 +12,7 @@
 
 #include "SensorManager.h"
 #include "DataKeeper.h"
-#include "MotorManager.h"
+//#include "MotorManager.h"
 
 using namespace std;
 
@@ -20,14 +20,14 @@ using namespace std;
 
 int main() {
 //	MotorManager motorManager = MotorManager();
-//	SensorManager sensorManager = SensorManager();
-//	DataKeeper dataKeeper = DataKeeper();
+	SensorManager sensorManager = SensorManager();
+	DataKeeper dataKeeper = DataKeeper();
 
 	cout << "Robot Booting..." << endl;
 	cout << "HELP ME" << endl;
 	cout << "Rebooted code :D" << endl;
 
-/*
+
 	for(int i=0;i<100;i++){
 	sensorManager.readSensors(dataKeeper);
 	//motorManager.driveMotors(dataKeeper);
@@ -48,15 +48,16 @@ int main() {
 		cout << "Mag Z Value " << magSense.getMagZ() << endl;
 		usleep(500000);
 	}
-*//*
-	cout << "X Accel Value " << dataKeeper.getGyroAccelX() << endl;
-	cout << "Y Accel Value " << dataKeeper.getGyroAccelY() << endl;
-	cout << "Z Accel Value " << dataKeeper.getGyroAccelZ() << endl;
-	cout << "Roll Value " << dataKeeper.getGyroRoll() << endl;
-	cout << "Pitch Value " << dataKeeper.getGyroPitch() << endl;
+*/
+	cout << "X Accel Value " << dataKeeper.getAccelGyroX() << endl;
+	cout << "Y Accel Value " << dataKeeper.getAccelGyroY() << endl;
+	cout << "Z Accel Value " << dataKeeper.getAccelGyroZ() << endl;
+	cout << "Roll Value " << dataKeeper.getAccelRoll() << endl;
+	cout << "Pitch Value " << dataKeeper.getAccelPitch() << endl;
+	cout << "Yaw Value " << dataKeeper.getAccelYaw() << endl;
 
 	usleep(5000000);
 	}
-*/
+
 	return 0;
 }
