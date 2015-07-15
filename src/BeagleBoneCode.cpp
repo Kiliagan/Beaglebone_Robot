@@ -19,9 +19,9 @@ using namespace std;
 
 
 int main() {
-	MotorManager motorManager = MotorManager();
-	SensorManager sensorManager = SensorManager();
-	DataKeeper dataKeeper = DataKeeper();
+//	MotorManager motorManager = MotorManager();
+//	SensorManager sensorManager = SensorManager();
+//	DataKeeper dataKeeper = DataKeeper();
 
 	cout << "Robot Booting..." << endl;
 	cout << "HELP ME" << endl;
