@@ -25,8 +25,9 @@ int main() {
 
 	cout << "Robot Booting..." << endl;
 	cout << "HELP ME" << endl;
+	cout << "Rebooted code :D" << endl;
 
-
+/*
 	for(int i=0;i<100;i++){
 	sensorManager.readSensors(dataKeeper);
 	//motorManager.driveMotors(dataKeeper);
@@ -47,7 +48,7 @@ int main() {
 		cout << "Mag Z Value " << magSense.getMagZ() << endl;
 		usleep(500000);
 	}
-*/
+*//*
 	cout << "X Accel Value " << dataKeeper.getGyroAccelX() << endl;
 	cout << "Y Accel Value " << dataKeeper.getGyroAccelY() << endl;
 	cout << "Z Accel Value " << dataKeeper.getGyroAccelZ() << endl;
@@ -56,6 +57,6 @@ int main() {
 
 	usleep(5000000);
 	}
-
+*/
 	return 0;
 }
