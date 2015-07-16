@@ -8,8 +8,8 @@
 #include "SensorManager.h"
 
 IR2Y0A21 irDistance = IR2Y0A21();
-//ADXL345 gyroSensor = ADXL345(1,0x53);
-MPU6050 accelSensor = MPU6050(1,0x68);
+ADXL345 gyroSensor = ADXL345(1,0x53);
+//MPU6050 accelSensor = MPU6050(1,0x68);
 GY273 magSensor = GY273(1,0x1E);
 
 SensorManager::SensorManager() {
@@ -21,7 +21,7 @@ void SensorManager::readSensors(DataKeeper &dataKeeper){
 
 	dataKeeper.setIRDistance(irDistance.getDistance());
 
-	accelSensor.readSensorState();
+/*	accelSensor.readSensorState();
 	dataKeeper.setAccelAccelX(accelSensor.getAccelerationX());
 	dataKeeper.setAccelAccelY(accelSensor.getAccelerationY());
 	dataKeeper.setAccelAccelZ(accelSensor.getAccelerationZ());
@@ -31,14 +31,14 @@ void SensorManager::readSensors(DataKeeper &dataKeeper){
 	dataKeeper.setAccelPitch(accelSensor.getPitch());
 	dataKeeper.setAccelRoll(accelSensor.getRoll());
 	dataKeeper.setAccelYaw(accelSensor.getYaw());
-/*
+*/
 	gyroSensor.readSensorState();
 	dataKeeper.setGyroAccelX(gyroSensor.getAccelerationX());
 	dataKeeper.setGyroAccelY(gyroSensor.getAccelerationY());
 	dataKeeper.setGyroAccelZ(gyroSensor.getAccelerationZ());
 	dataKeeper.setGyroRoll(gyroSensor.getRoll());
 	dataKeeper.setGyroPitch(gyroSensor.getPitch());
-*/
+
 	for(int k = 0; k < 2; k++){
 		magSensor.readSensorState();
 		dataKeeper.setMagX(magSensor.getMagX());

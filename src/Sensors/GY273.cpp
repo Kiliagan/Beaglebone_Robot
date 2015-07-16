@@ -60,6 +60,8 @@ GY273::GY273(unsigned int I2CBus, unsigned int I2CAddress):
 	this->angX = 0;
 	this->angY = 0;
 	this->angZ = 0;
+	this->offX = 250;
+	this->offY = 317;
 	this->heading = 0;
 	this->headingDeg = 0;
 	this->registers = NULL;
@@ -92,6 +94,9 @@ int GY273::readSensorState(){
 	this->magY = this->combineRegisters(*(registers+DATA_OUT_Y_H), *(registers+DATA_OUT_Y_L));
 	this->magZ = this->combineRegisters(*(registers+DATA_OUT_Z_H), *(registers+DATA_OUT_Z_L));
 	
+	this->magX += this->offX;
+	this->magY += this->offY;
+
 	this->angX = this->magX / _hmc5883_Gauss_LSB_XY * GAUSS_TO_MICROTESLA;
 	this->angY = this->magY / _hmc5883_Gauss_LSB_XY * GAUSS_TO_MICROTESLA;
 	this->angZ = this->magZ / _hmc5883_Gauss_LSB_Z * GAUSS_TO_MICROTESLA;

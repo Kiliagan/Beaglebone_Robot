@@ -37,6 +37,7 @@ private:
 	short magX, magY, magZ; // raw 2's complement values
 	float angX, angY, angZ;
 	float heading, headingDeg;
+	short offX, offY;
 	short combineRegisters(unsigned char msb, unsigned char lsb);
 public:
 	GY273(unsigned int I2CBus, unsigned int I2CAddress);
