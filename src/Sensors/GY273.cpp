@@ -46,7 +46,7 @@ using namespace std;
 
 // ORIENTATION:
 #define COMPASS_NORTH		0x00
-#define COMPASS_S0UTH		0x01
+#define COMPASS_SOUTH		0x01
 #define COMPASS_WEST		0x02
 #define COMPASS_EAST		0x03
 #define COMPASS_UP		0x04
@@ -120,45 +120,56 @@ int GY273::readSensorState(){
 	// Z = bits 0-2
   	switch((mode >> 5) & 0x07 )
 	{
-    		case COMPASS_NORTH: mag_north = sample.Z; break;
-    		case COMPASS_SOUTH: mag_north = 0-sample.Z; break;
-    		case COMPASS_WEST:  mag_west  = sample.Z; break;
-    		case COMPASS_EAST:  mag_west  = 0-sample.Z; break;
+    	case COMPASS_NORTH: mag_north = this->magZ; break;
+    	case COMPASS_SOUTH: mag_north = 0-this->magZ; break;
+   		case COMPASS_WEST:  mag_west  = this->magZ; break;
+   		case COMPASS_EAST:  mag_west  = 0-this->magZ; break;
       
-    		// Don't care
-    		case COMPASS_UP:
-    		case COMPASS_DOWN:
-     		break;
+   		// Don't care
+   		case COMPASS_UP:
+   		case COMPASS_DOWN:
+   		break;
   	}
   
   	// Y = bits 3 - 5
   	switch(((mode >> 5) >> 3) & 0x07 )
   	{
-	 	case COMPASS_NORTH: mag_north = sample.Y;  break;
-    		case COMPASS_SOUTH: mag_north = 0-sample.Y; ;  break;
-    		case COMPASS_WEST:  mag_west  = sample.Y;  break;
-    		case COMPASS_EAST:  mag_west  = 0-sample.Y;  break;
+	 	case COMPASS_NORTH: mag_north = this->magY;  break;
+    	case COMPASS_SOUTH: mag_north = 0-this->magY; ;  break;
+    	case COMPASS_WEST:  mag_west  = this->magY;  break;
+    	case COMPASS_EAST:  mag_west  = 0-this->magY;  break;
       
-    		// Don't care
-    		case COMPASS_UP:
-    		case COMPASS_DOWN:
-     		break;
+    	// Don't care
+    	case COMPASS_UP:
+    	case COMPASS_DOWN:
+     	break;
   	}
   
   	// X = bits 6 - 8
   	switch(((mode >> 5) >> 6) & 0x07 )
   	{
-    		case COMPASS_NORTH: mag_north = sample.X; break;
-    		case COMPASS_SOUTH: mag_north = 0-sample.X; break;
-    		case COMPASS_WEST:  mag_west  = sample.X; break;
-    		case COMPASS_EAST:  mag_west  = 0-sample.X; break;
+    	case COMPASS_NORTH: mag_north = this->magX; break;
+    	case COMPASS_SOUTH: mag_north = 0-this->magX; break;
+    	case COMPASS_WEST:  mag_west  = this->magX; break;
+    	case COMPASS_EAST:  mag_west  = 0-this->magX; break;
       
-    		// Don't care
-    		case COMPASS_UP:
-    		case COMPASS_DOWN:
-     		break;
+    	// Don't care
+    	case COMPASS_UP:
+    	case COMPASS_DOWN:
+     	break;
   	}
 
+  	this->heading = atan2(mag_west, mag_north);
+
+  	if(this->heading < 0){
+  		this->heading += 2*M_PI;
+  	}
+
+  	if(this->heading > 2*M_PI){
+  		this->heading -= 2*M_PI;
+  	}
+
+  	this->headingDeg = this->heading * 180/M_PI;
 
 	return 0;
 }
