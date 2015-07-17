@@ -15,19 +15,19 @@
 using namespace std;
 
 //From Table 2, of the GY273 Data sheet
-#define CONFIG_A 			0x00
-#define CONFIG_B 			0x01
-#define MODE				0x02
+#define CONFIG_A		0x00
+#define CONFIG_B		0x01
+#define MODE			0x02
 #define DATA_OUT_X_H		0x03
 #define DATA_OUT_X_L		0x04
 #define DATA_OUT_Z_H		0x05
 #define DATA_OUT_Z_L		0x06
 #define DATA_OUT_Y_H		0x07
 #define DATA_OUT_Y_L		0x08
-#define STATUS				0x09
-#define ID_A				0x10
-#define ID_B				0x11
-#define ID_C				0x12
+#define STATUS			0x09
+#define ID_A			0x10
+#define ID_B			0x11
+#define ID_C			0x12
 
 // MODE:
 #define COMPASS_CONTINUOUS	0x00
@@ -49,7 +49,7 @@ using namespace std;
 #define COMPASS_S0UTH		0x01
 #define COMPASS_WEST		0x02
 #define COMPASS_EAST		0x03
-#define COMPASS_UP			0x04
+#define COMPASS_UP		0x04
 #define COMPASS_DOWN		0x05
 
 #define COMPASS_HORIZONTAL_X_NORTH 	( (COMPASS_NORTH << 6) | (COMPASS_WEST  << 3) | (COMPASS_UP    )) << 5
@@ -117,7 +117,47 @@ int GY273::readSensorState(){
 
 	float mag_north, mag_west;
 
-	//Z
+	// Z = bits 0-2
+  	switch((mode >> 5) & 0x07 )
+	{
+    		case COMPASS_NORTH: mag_north = sample.Z; break;
+    		case COMPASS_SOUTH: mag_north = 0-sample.Z; break;
+    		case COMPASS_WEST:  mag_west  = sample.Z; break;
+    		case COMPASS_EAST:  mag_west  = 0-sample.Z; break;
+      
+    		// Don't care
+    		case COMPASS_UP:
+    		case COMPASS_DOWN:
+     		break;
+  	}
+  
+  	// Y = bits 3 - 5
+  	switch(((mode >> 5) >> 3) & 0x07 )
+  	{
+	 	case COMPASS_NORTH: mag_north = sample.Y;  break;
+    		case COMPASS_SOUTH: mag_north = 0-sample.Y; ;  break;
+    		case COMPASS_WEST:  mag_west  = sample.Y;  break;
+    		case COMPASS_EAST:  mag_west  = 0-sample.Y;  break;
+      
+    		// Don't care
+    		case COMPASS_UP:
+    		case COMPASS_DOWN:
+     		break;
+  	}
+  
+  	// X = bits 6 - 8
+  	switch(((mode >> 5) >> 6) & 0x07 )
+  	{
+    		case COMPASS_NORTH: mag_north = sample.X; break;
+    		case COMPASS_SOUTH: mag_north = 0-sample.X; break;
+    		case COMPASS_WEST:  mag_west  = sample.X; break;
+    		case COMPASS_EAST:  mag_west  = 0-sample.X; break;
+      
+    		// Don't care
+    		case COMPASS_UP:
+    		case COMPASS_DOWN:
+     		break;
+  	}
 
 
 	return 0;
