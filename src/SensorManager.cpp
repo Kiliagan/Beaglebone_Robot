@@ -44,9 +44,6 @@ void SensorManager::readSensors(DataKeeper &dataKeeper){
 		dataKeeper.setMagX(magSensor.getMagX());
 		dataKeeper.setMagY(magSensor.getMagY());
 		dataKeeper.setMagZ(magSensor.getMagZ());
-		dataKeeper.setAngX(magSensor.getAngX());
-		dataKeeper.setAngY(magSensor.getAngY());
-		dataKeeper.setAngZ(magSensor.getAngZ());
 		dataKeeper.setHeading(magSensor.getHeading());
 		dataKeeper.setHeadingDeg(magSensor.getHeadingDeg());
 	}
