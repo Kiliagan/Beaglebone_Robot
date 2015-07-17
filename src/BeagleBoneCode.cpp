@@ -9,6 +9,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <boost/version.hpp>
+#include <math.h>
 
 #include "SensorManager.h"
 #include "DataKeeper.h"
@@ -23,9 +24,9 @@ int main() {
 	SensorManager sensorManager = SensorManager();
 	DataKeeper dataKeeper = DataKeeper();
 
-	cout << "Robot Booting..." << endl;
+	cout << "Robot Booting... " << M_PI << endl;
 
-	int loop = 20;
+	int loop = 200;
 
 	for(int i=0;i<loop;i++){
 	sensorManager.readSensors(dataKeeper);

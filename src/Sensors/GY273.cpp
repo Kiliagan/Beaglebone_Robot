@@ -82,8 +82,8 @@ GY273::GY273(unsigned int I2CBus, unsigned int I2CAddress):
 	this->heading = 0;
 	this->headingDeg = 0;
 	this->registers = NULL;
-	this->writeRegister(MODE, 0x00);
-	this->mode = COMPASS_CONTINUOUS | COMPASS_SCALE_130 | COMPASS_HORIZONTAL_X_NORTH;
+//	this->writeRegister(MODE, 0x00);
+	this->mode = COMPASS_SINGLE | COMPASS_SCALE_130 | COMPASS_HORIZONTAL_X_NORTH;
 }
 
 void GY273::SetSamplingMode(unsigned int sampling_mode){
@@ -130,7 +130,7 @@ int GY273::readSensorState(){
    		case COMPASS_DOWN:
    		break;
   	}
-  
+
   	// Y = bits 3 - 5
   	switch(((mode >> 5) >> 3) & 0x07 )
   	{
@@ -162,11 +162,11 @@ int GY273::readSensorState(){
   	this->heading = atan2(mag_west, mag_north);
 
   	if(this->heading < 0){
-  		this->heading += 2*M_PI;
+  		this->heading += M_PI;
   	}
 
-  	if(this->heading > 2*M_PI){
-  		this->heading -= 2*M_PI;
+  	if(this->heading > M_PI){
+  		this->heading -= M_PI;
   	}
 
   	this->headingDeg = this->heading * 180/M_PI;
