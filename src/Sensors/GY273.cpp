@@ -50,7 +50,7 @@ using namespace std;
 #define COMPASS_SOUTH		0x01
 #define COMPASS_WEST		0x02
 #define COMPASS_EAST		0x03
-#define COMPASS_UP		0x04
+#define COMPASS_UP			0x04
 #define COMPASS_DOWN		0x05
 
 #define COMPASS_HORIZONTAL_X_NORTH 	( (COMPASS_NORTH << 6) | (COMPASS_WEST  << 3) | (COMPASS_UP    )) << 5
@@ -124,10 +124,10 @@ void GY273::SetOrientation(uint16_t  orientation){
 int GY273::readSensorState(){
 	this->registers = this->readRegisters(BUFFER_SIZE, 0x00);
 	
-	this->magX = -1 * this->combineRegisters(*(registers+DATA_OUT_X_H), *(registers+DATA_OUT_X_L));
-	this->magY = -1 * this->combineRegisters(*(registers+DATA_OUT_Y_H), *(registers+DATA_OUT_Y_L));
-	this->magZ = -1 * this->combineRegisters(*(registers+DATA_OUT_Z_H), *(registers+DATA_OUT_Z_L));
-
+	this->magX = 0.92 * this->combineRegisters(*(registers+DATA_OUT_X_H), *(registers+DATA_OUT_X_L));
+	this->magY = 0.92 * this->combineRegisters(*(registers+DATA_OUT_Y_H), *(registers+DATA_OUT_Y_L));
+	this->magZ = 0.92 * this->combineRegisters(*(registers+DATA_OUT_Z_H), *(registers+DATA_OUT_Z_L));
+/*
 	float mag_north, mag_west;
 
 	// Z = bits 0-2
@@ -171,10 +171,12 @@ int GY273::readSensorState(){
     	case COMPASS_DOWN:
      	break;
   	}
+*/
+  	this->heading = atan2(magY, magX);
 
-  	this->heading = atan2(mag_west, mag_north);
+  	this->heading -= 0.059632083;
 
-  	if(this->heading <= 0){
+  	if(this->heading < 0){
   		this->heading += 2*M_PI;
   	}
 
@@ -183,6 +185,26 @@ int GY273::readSensorState(){
   	}
 
   	this->headingDeg = this->heading * 180/M_PI;
+
+  	if(this->headingDeg >= 1 && this->headingDeg < 240){
+  		this->headingDeg = map(this->headingDeg,0,239,0,179);
+  	}
+  	else if(this->headingDeg >= 240){
+  		this->headingDeg = map(this->headingDeg,240,360,180,360);
+  	}
+
+
+
+  	if(this->headingDeg >= 60 && this->headingDeg < 180){
+  	  	this->headingDeg = map(this->headingDeg,60,179,0,179);
+  	}
+  	else if(this->headingDeg >= 0 && this->headingDeg < 60){
+  	  	 this->headingDeg = map(this->headingDeg,0,60,300,360);
+  	}
+  	else if(this->headingDeg >= 270 && this->headingDeg < 360){
+  	  	 this->headingDeg = map(this->headingDeg,270,360,270,300);
+  	}
+  	this->headingDeg = roundf(this->headingDeg);
 
 	return 0;
 }

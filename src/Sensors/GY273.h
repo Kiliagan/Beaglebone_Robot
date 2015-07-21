@@ -31,6 +31,7 @@ public:
 	void SetScale(uint16_t scale);
 	virtual void SetOrientation(uint16_t orientation);
 	virtual void SetSamplingMode(uint16_t sampling_mode);
+	virtual long map(long x, long in_min, long in_max, long out_min, long out_max) { return (x-in_min)*(out_max-out_min)/(in_max-in_min)+out_min;}
 
 	virtual short getMagX() { return magX; }
 	virtual short getMagY() { return magY; }
