@@ -9,6 +9,7 @@
 #define SENSORS_GY273_H_
 
 #include "I2CDevice.h"
+#include <stdint.h>
 
 #define BUFFER_SIZE 0x40
 
@@ -25,11 +26,11 @@ public:
 
 	virtual int readSensorState();
 
-	unsigned int mode;
+	uint16_t mode;
 
-	virtual void SetScale(unsigned int scale);
-	virtual void SetOrientation(unsigned int orientation);
-	virtual void SetSamplingMode(unsigned int sampling_mode);
+	void SetScale(uint16_t scale);
+	virtual void SetOrientation(uint16_t orientation);
+	virtual void SetSamplingMode(uint16_t sampling_mode);
 
 	virtual short getMagX() { return magX; }
 	virtual short getMagY() { return magY; }

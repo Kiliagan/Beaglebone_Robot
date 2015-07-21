@@ -41,12 +41,12 @@ void SensorManager::readSensors(DataKeeper &dataKeeper){
 
 	for(int k = 0; k < 2; k++){
 		magSensor.readSensorState();
-		dataKeeper.setMagX(magSensor.getMagX());
-		dataKeeper.setMagY(magSensor.getMagY());
-		dataKeeper.setMagZ(magSensor.getMagZ());
-		dataKeeper.setHeading(magSensor.getHeading());
-		dataKeeper.setHeadingDeg(magSensor.getHeadingDeg());
 	}
+	dataKeeper.setMagX(magSensor.getMagX());
+	dataKeeper.setMagY(magSensor.getMagY());
+	dataKeeper.setMagZ(magSensor.getMagZ());
+	dataKeeper.setHeading(magSensor.getHeading());
+	dataKeeper.setHeadingDeg(magSensor.getHeadingDeg());
 }
 
 SensorManager::~SensorManager() {

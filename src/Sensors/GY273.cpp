@@ -12,6 +12,7 @@
 #include <math.h>
 #include <stdio.h>
 
+
 using namespace std;
 
 //From Table 2, of the GY273 Data sheet
@@ -82,25 +83,37 @@ GY273::GY273(unsigned int I2CBus, unsigned int I2CAddress):
 	this->heading = 0;
 	this->headingDeg = 0;
 	this->registers = NULL;
-//	this->writeRegister(MODE, 0x00);
-	this->mode = COMPASS_SINGLE | COMPASS_SCALE_130 | COMPASS_HORIZONTAL_X_NORTH;
+	this->mode = COMPASS_CONTINUOUS | COMPASS_SCALE_130 | COMPASS_HORIZONTAL_X_NORTH;
+	this->writeRegister(MODE, this->mode & 0x03);
 }
 
-void GY273::SetSamplingMode(unsigned int sampling_mode){
+/**
+ *
+ * @param sampling_mode
+ */
+void GY273::SetSamplingMode(uint16_t  sampling_mode){
 
 	this->mode = (this->mode & ~0x03) | (sampling_mode & 0x03);
 
 	this->writeRegister(MODE, mode & 0x03);
 }
 
-void GY273::SetScale(unsigned int scale){
+/**
+ *
+ * @param scale
+ */
+void GY273::SetScale(uint16_t scale){
 
 	mode = (mode & ~0x1C) | (scale & 0x1C);
 
 	this->writeRegister(CONFIG_B, ((mode >> 2) & 0x07) << 5);
 }
 
-void GY273::SetOrientation(unsigned int orientation){
+/**
+ *
+ * @param orientation
+ */
+void GY273::SetOrientation(uint16_t  orientation){
 	mode = (mode & ~0x3FE0) | (orientation & 0x3FE0);
 }
 
@@ -161,12 +174,12 @@ int GY273::readSensorState(){
 
   	this->heading = atan2(mag_west, mag_north);
 
-  	if(this->heading < 0){
-  		this->heading += M_PI;
+  	if(this->heading <= 0){
+  		this->heading += 2*M_PI;
   	}
 
-  	if(this->heading > M_PI){
-  		this->heading -= M_PI;
+  	if(this->heading > 2*M_PI){
+  		this->heading -= 2*M_PI;
   	}
 
   	this->headingDeg = this->heading * 180/M_PI;
