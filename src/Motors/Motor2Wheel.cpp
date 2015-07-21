@@ -40,12 +40,11 @@ int Motor2Wheel::forward() {
 	this->wheelFrontLeft_2->setValue(GPIO::LOW);
 	this->wheelFrontRight_1->setValue(GPIO::HIGH);
 	this->wheelFrontRight_2->setValue(GPIO::LOW);
-	this->pwm->run();
+	this->startPWM();
 
-	usleep(500000);
+	usleep(50000);
 
-	//switch wheels off.
-	this->pwm->stop();
+	this->stopPWM();
 	return 0;
 }
 
@@ -59,12 +58,11 @@ int Motor2Wheel::back() {
 	this->wheelFrontLeft_2->setValue(GPIO::HIGH);
 	this->wheelFrontRight_1->setValue(GPIO::LOW);
 	this->wheelFrontRight_2->setValue(GPIO::HIGH);
-	this->pwm->run();
+	this->startPWM();
 
-	usleep(500000);
+	usleep(50000);
 
-	//switch wheels off.
-	this->pwm->stop();
+	this->stopPWM();
 	return 0;
 }
 
@@ -78,12 +76,11 @@ int Motor2Wheel::left() {
 	this->wheelFrontLeft_2->setValue(GPIO::HIGH);
 	this->wheelFrontRight_1->setValue(GPIO::HIGH);
 	this->wheelFrontRight_2->setValue(GPIO::LOW);
-	this->pwm->run();
+	this->startPWM();
 
-	usleep(500000);
+	usleep(50000);
 
-	//switch wheels off.
-	this->pwm->stop();
+	this->stopPWM();
 	return 0;
 }
 
@@ -97,12 +94,11 @@ int Motor2Wheel::right() {
 	this->wheelFrontLeft_2->setValue(GPIO::LOW);
 	this->wheelFrontRight_1->setValue(GPIO::LOW);
 	this->wheelFrontRight_2->setValue(GPIO::HIGH);
-	this->pwm->run();
+	this->startPWM();
 
-	usleep(500000);
+	usleep(50000);
 
-	//switch wheels off.
-	this->pwm->stop();
+	this->stopPWM();
 	return 0;
 }
 

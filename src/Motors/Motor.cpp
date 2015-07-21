@@ -31,7 +31,7 @@ Motor::Motor(PWM *pwm) {
 	this->wheelBackRight_2 = 0;
 	this->pwm->setPolarity(PWM::ACTIVE_LOW);
 	this->setDutyCyclePeriod(DEFAULT_MOTOR_PWM_PERIOD);
-	this->setSpeedPercent(0);
+	this->speedPercent = 50.0f;
 }
 
 /**

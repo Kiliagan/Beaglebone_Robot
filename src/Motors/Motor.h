@@ -25,7 +25,8 @@ public:
 	virtual void setSpeedPercent(float speedPercent);
 	virtual float getSpeedPercent() { return this->speedPercent; }
 	virtual void setDutyCyclePeriod(unsigned int period_ns);
-	
+	virtual void startPWM(){ this->pwm->run(); }
+	virtual void stopPWM(){ this->pwm->stop(); }
 
 protected:
 	PWM *pwm;
