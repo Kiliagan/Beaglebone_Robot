@@ -51,6 +51,11 @@ int Motor4Wheel::forward(){
 	this->wheelBackLeft_2->setValue(GPIO::LOW);
 	this->wheelBackRight_1->setValue(GPIO::HIGH);
 	this->wheelBackRight_2->setValue(GPIO::LOW);
+	this->pwm->run();
+
+	usleep(50000);
+
+	this->pwm->stop();
 	return 0;
 }
 
@@ -68,6 +73,11 @@ int Motor4Wheel::back(){
 	this->wheelBackLeft_2->setValue(GPIO::HIGH);
 	this->wheelBackRight_1->setValue(GPIO::LOW);
 	this->wheelBackRight_2->setValue(GPIO::HIGH);
+	this->pwm->run();
+
+	usleep(50000);
+
+	this->pwm->stop();
 	return 0;
 }
 
@@ -85,6 +95,11 @@ int Motor4Wheel::left(){
 	this->wheelBackLeft_2->setValue(GPIO::HIGH);
 	this->wheelBackRight_1->setValue(GPIO::HIGH);
 	this->wheelBackRight_2->setValue(GPIO::LOW);
+	this->pwm->run();
+
+	usleep(50000);
+
+	this->pwm->stop();
 	return 0;
 }
 
@@ -102,6 +117,11 @@ int Motor4Wheel::right(){
 	this->wheelBackLeft_2->setValue(GPIO::LOW);
 	this->wheelBackRight_1->setValue(GPIO::LOW);
 	this->wheelBackRight_2->setValue(GPIO::HIGH);
+	this->pwm->run();
+
+	usleep(50000);
+
+	this->pwm->stop();
 	return 0;
 }
 

@@ -11,14 +11,17 @@
 #include "Motors/Motor2Wheel.h"
 #include "Motors/Motor4Wheel.h"
 #include "DataKeeper.h"
-#include "SensorManager.h"
 
 class MotorManager {
+private:
+	int numWheels;
 public:
-	MotorManager();
+	MotorManager(int numWheels);
 
-	virtual void driveMotors(DataKeeper &dataKeeper, SensorManager &sensorManager);
-	virtual int turn(char direction, DataKeeper &dataKeeper, SensorManager &sensorManager);
+	virtual void forward();
+	virtual void back();
+	virtual void left();
+	virtual void right();
 
 	virtual ~MotorManager();
 };
