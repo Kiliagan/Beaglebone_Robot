@@ -198,6 +198,13 @@ int GY273::readSensorState(){
   	else if(this->headingDeg >= 265){
   		this->headingDeg = map(this->headingDeg,265,360,270,360);
   	}
+
+  	if(this->headingDeg >= 1 && this->headingDeg < 62){
+  		this->headingDeg = map(this->headingDeg,0,61,0,89);
+  	}
+  	else if(this->headingDeg >= 62 && this->headingDeg < 180){
+  		this->headingDeg = map(this->headingDeg,62,179,90,179);
+  	}
    	this->headingDeg = roundf(this->headingDeg);
 
 	return 0;
