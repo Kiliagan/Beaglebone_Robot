@@ -4,18 +4,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/AStar.cpp \
 ../src/BeagleBoneCode.cpp \
 ../src/DataKeeper.cpp \
 ../src/MotorManager.cpp \
 ../src/SensorManager.cpp 
 
 OBJS += \
+./src/AStar.o \
 ./src/BeagleBoneCode.o \
 ./src/DataKeeper.o \
 ./src/MotorManager.o \
 ./src/SensorManager.o 
 
 CPP_DEPS += \
+./src/AStar.d \
 ./src/BeagleBoneCode.d \
 ./src/DataKeeper.d \
 ./src/MotorManager.d \

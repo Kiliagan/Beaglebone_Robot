@@ -8,9 +8,22 @@
 #ifndef ASTAR_H_
 #define ASTAR_H_
 
+#include <iostream>
+#include <iomanip>
+#include <queue>
+#include <string>
+#include <math.h>
+#include <ctime>
+#include <cstdlib>
+#include <cstdio>
+
 class AStar {
 public:
+
 	AStar();
+
+	virtual void main();
+
 	virtual ~AStar();
 };
 
