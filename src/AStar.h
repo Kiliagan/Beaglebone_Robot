@@ -16,13 +16,21 @@
 #include <ctime>
 #include <cstdlib>
 #include <cstdio>
+#include "DataKeeper.h"
 
 class AStar {
+private:
+	std::string path;
+	int startX, startY, endX, endY;
 public:
 
 	AStar();
 
-	virtual void main();
+	virtual void main(DataKeeper &dataKeeper, int switchVal);
+	virtual void displayMap();
+	virtual std::string pathFind( const int & xStart, const int & yStart, const int & xFinish, const int & yFinish );
+	virtual void newObstacle(int xObj, int yObj);
+
 
 	virtual ~AStar();
 };

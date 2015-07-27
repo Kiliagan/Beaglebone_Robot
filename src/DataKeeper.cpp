@@ -31,7 +31,6 @@ DataKeeper::DataKeeper() {
 	angZ = 0;
 	heading = 0;
 	headingDeg = 0;
-
 }
 
 void DataKeeper::setIRDistance(float irDistance){
@@ -125,6 +124,8 @@ void DataKeeper::setHeading(float heading){
 void DataKeeper::setHeadingDeg(float headingDeg){
 	this->headingDeg = headingDeg;
 }
+
+
 
 DataKeeper::~DataKeeper() {
 

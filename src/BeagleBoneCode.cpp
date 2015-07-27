@@ -25,7 +25,7 @@ int main() {
 	DataKeeper dataKeeper = DataKeeper();
 	AStar pathPlanner = AStar();
 
-	int i = 0;
+//	int i = 0;
 	cout << "Robot Booting... " << endl;
 
 //	while(i<100){
@@ -39,7 +39,10 @@ int main() {
 //		i++;
 //	}
 
-	pathPlanner.main();
+	pathPlanner.main(dataKeeper, 0);
+	pathPlanner.displayMap();
+	cout << "Heres the Path: " << pathPlanner.pathFind(0,0,57,43) << endl;
+	pathPlanner.displayMap();
 //	while(i<1){
 //
 //		sensorManager.readSensors(dataKeeper);
@@ -48,8 +51,6 @@ int main() {
 //		float curAngle = dataKeeper.getHeadingDeg();
 //		float finAngle, lowFinAngle, highFinAngle;
 //		int tolerance = 3;
-//
-//		cout << "At Stop 1" << endl;
 //
 //		finAngle = curAngle + 90;
 //
@@ -62,11 +63,8 @@ int main() {
 //		if(highFinAngle > 360){ highFinAngle -= 360;}
 //		else if(highFinAngle < 0){ highFinAngle += 360;}
 //
-//		cout << "At Stop 2" << endl;
-//
 //		if(lowFinAngle > highFinAngle){
 //			while(curAngle < lowFinAngle && curAngle > highFinAngle){
-//				cout << "At Stop 3: loop" << endl;
 //
 //				motorManager.left();
 //				sensorManager.readSensors(dataKeeper);
@@ -79,7 +77,6 @@ int main() {
 //		}
 //		else{
 //			while(curAngle < (lowFinAngle) || curAngle > (highFinAngle)){
-//				cout << "At Stop 3: loop" << endl;
 //
 //				motorManager.left();
 //				sensorManager.readSensors(dataKeeper);
@@ -90,7 +87,6 @@ int main() {
 //				usleep(500000);
 //			}
 //		}
-//		cout << "At Stop 4" << endl;
 //
 //		i++;
 //	}

@@ -8,6 +8,8 @@
 #ifndef DATAKEEPER_H_
 #define DATAKEEPER_H_
 
+#include <string>
+
 class DataKeeper {
 private:
 	float irDistance;
@@ -66,6 +68,7 @@ public:
 	virtual float getHeading(){return heading;}
 	virtual void setHeadingDeg( float headingDeg);
 	virtual float getHeadingDeg(){return headingDeg;}
+
 
 	virtual ~DataKeeper();
 };
