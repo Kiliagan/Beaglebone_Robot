@@ -20,8 +20,8 @@ using namespace std;
 
 static int NORTH = 0;
 static int WEST = 90;
-static int SOUTH = 0;
-static int NORTH = 0;
+static int SOUTH = 180;
+static int East = 270;
 
 int main() {
 
