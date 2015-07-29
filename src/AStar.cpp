@@ -257,6 +257,14 @@ void AStar::main(DataKeeper &dataKeeper, int switchVal)
     cout<<"Route:"<<endl;
     cout<<path<<endl<<endl;
 
+}
+
+void AStar::newObstacle(int xObj, int yObj){
+	map[xObj][yObj] = 1;
+}
+
+void AStar::displayMap(){
+
     // follow the route on the map and display it
 	if(path.length()>0)
 	{
@@ -275,14 +283,6 @@ void AStar::main(DataKeeper &dataKeeper, int switchVal)
 		map[x][y]=4;
 
 	}
-
-}
-
-void AStar::newObstacle(int xObj, int yObj){
-	map[xObj][yObj] = 1;
-}
-
-void AStar::displayMap(){
 
 	// display the map with the route
 	for(int y=0;y<m;y++)
