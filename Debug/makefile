@@ -58,7 +58,7 @@ clean:
 	-@echo ' '
 
 post-build:
-	-scp BeagleBoneCode kilian@192.168.7.2:/home/kilian/RobotCode
+	-scp BeagleBoneCode kilian@192.168.43.208:/home/kilian/RobotCode ; scp BeagleBoneCode kilian@192.168.43.41:/home/kilian/RobotCode
 	-@echo ' '
 
 .PHONY: all clean dependents
