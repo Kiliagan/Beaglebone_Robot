@@ -26,5 +26,6 @@ SUBDIRS := \
 src/Sensors \
 src \
 src/Pins \
+src/Networking \
 src/Motors \
 

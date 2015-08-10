@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <unistd.h>
-#include <boost/version.hpp>
+//#include <boost/version.hpp>
 #include <math.h>
 
 #include "SensorManager.h"

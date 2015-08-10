@@ -10,6 +10,7 @@ RM := rm -rf
 -include sources.mk
 -include src/Sensors/subdir.mk
 -include src/Pins/subdir.mk
+-include src/Networking/subdir.mk
 -include src/Motors/subdir.mk
 -include src/subdir.mk
 -include subdir.mk
@@ -50,18 +51,13 @@ BeagleBoneCode: $(OBJS) $(USER_OBJS)
 	arm-linux-gnueabihf-g++  -o "BeagleBoneCode" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
-	$(MAKE) --no-print-directory post-build
 
 # Other Targets
 clean:
 	-$(RM) $(C++_DEPS)$(OBJS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) BeagleBoneCode
 	-@echo ' '
 
-post-build:
-	-sudo ./copier.sh
-	-@echo ' '
-
 .PHONY: all clean dependents
-.SECONDARY: post-build
+.SECONDARY:
 
 -include ../makefile.targets
