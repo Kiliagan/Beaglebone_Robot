@@ -28,7 +28,7 @@ int main() {
 //	int i = 0;
 	cout << "Robot Booting... " << endl;
 
-	cout << "Both robots?" << endl;
+	cout << "Did it work?" << endl;
 
 //	pathPlanner.main(dataKeeper, 0);
 //	pathPlanner.displayMap();
