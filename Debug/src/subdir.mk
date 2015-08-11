@@ -6,23 +6,29 @@
 CPP_SRCS += \
 ../src/AStar.cpp \
 ../src/BeagleBoneCode.cpp \
+../src/Client.cpp \
 ../src/DataKeeper.cpp \
 ../src/MotorManager.cpp \
-../src/SensorManager.cpp 
+../src/SensorManager.cpp \
+../src/Server.cpp 
 
 OBJS += \
 ./src/AStar.o \
 ./src/BeagleBoneCode.o \
+./src/Client.o \
 ./src/DataKeeper.o \
 ./src/MotorManager.o \
-./src/SensorManager.o 
+./src/SensorManager.o \
+./src/Server.o 
 
 CPP_DEPS += \
 ./src/AStar.d \
 ./src/BeagleBoneCode.d \
+./src/Client.d \
 ./src/DataKeeper.d \
 ./src/MotorManager.d \
-./src/SensorManager.d 
+./src/SensorManager.d \
+./src/Server.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
