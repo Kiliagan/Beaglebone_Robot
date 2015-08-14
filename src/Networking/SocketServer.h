@@ -36,6 +36,7 @@
 #include <string>
 #include <vector>
 #include "ConnectionHandler.h"
+#include "../DataKeeper.h"
 
 
 class SocketServer {
@@ -50,7 +51,7 @@ private:
 public:
 	SocketServer(int portNumber);
 	virtual int listen();
-	virtual int threadedListen();
+	virtual int threadedListen(DataKeeper &dataKeeper);
 	virtual int send(std::string message);
 	virtual std::string receive(int size);
 	virtual void notifyHandlerDeath(ConnectionHandler *connection);

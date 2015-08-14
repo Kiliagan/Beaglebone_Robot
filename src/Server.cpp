@@ -16,10 +16,10 @@ Server::~Server() {
 	// TODO Auto-generated destructor stub
 }
 
-void Server::startServer(){
+void Server::startServer(DataKeeper &dataKeeper){
 	std::cout << "Starting EBB Server Example" << std::endl;
 	SocketServer server(port);
 	std::cout << "Listening for a connection..." << std::endl;
-	server.threadedListen();
+	server.threadedListen(dataKeeper);
 	std::cout << "End of EBB Server Example" << std::endl;
 }

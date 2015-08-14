@@ -256,11 +256,16 @@ void AStar::main(DataKeeper &dataKeeper, int switchVal)
     cout<<"Time to calculate the route (ms): "<<time_elapsed<<endl;
     cout<<"Route:"<<endl;
     cout<<path<<endl<<endl;
+    dataKeeper.setPath(path);
 
 }
 
 void AStar::newObstacle(int xObj, int yObj){
 	map[xObj][yObj] = 1;
+}
+
+void AStar::newPath(DataKeeper &dataKeeper){
+	this->path=dataKeeper.getPath();
 }
 
 void AStar::displayMap(){

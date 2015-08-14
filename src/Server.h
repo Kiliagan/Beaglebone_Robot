@@ -8,12 +8,14 @@
 #ifndef SERVER_H_
 #define SERVER_H_
 
+#include "DataKeeper.h"
+
 class Server {
 private:
 	int port;
 public:
 	Server(int port);
-	virtual void startServer();
+	virtual void startServer(DataKeeper &dataKeeper);
 	virtual ~Server();
 };
 

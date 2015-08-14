@@ -31,6 +31,7 @@ DataKeeper::DataKeeper() {
 	angZ = 0;
 	heading = 0;
 	headingDeg = 0;
+	path = "No Path";
 }
 
 void DataKeeper::setIRDistance(float irDistance){
@@ -125,7 +126,9 @@ void DataKeeper::setHeadingDeg(float headingDeg){
 	this->headingDeg = headingDeg;
 }
 
-
+void DataKeeper::setPath(std::string path){
+	this->path = path;
+}
 
 DataKeeper::~DataKeeper() {
 

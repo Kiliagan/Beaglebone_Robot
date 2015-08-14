@@ -15,6 +15,8 @@
 #include "DataKeeper.h"
 #include "MotorManager.h"
 #include "AStar.h"
+#include "Server.h"
+#include "Client.h"
 
 using namespace std;
 
@@ -24,10 +26,17 @@ int main() {
 	SensorManager sensorManager = SensorManager();
 	DataKeeper dataKeeper = DataKeeper();
 	AStar pathPlanner = AStar();
+	Server server = Server(5050);
+	Client client = Client("192.168.43.41", 5050);
+
 
 //	int i = 0;
 	cout << "Robot Booting... " << endl;
 
+	server.startServer(dataKeeper);
+
+/*	pathPlanner.main(dataKeeper, 0);
+	client.startClient(dataKeeper);*/
 
 
 //	pathPlanner.main(dataKeeper, 0);

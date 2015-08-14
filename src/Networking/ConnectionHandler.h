@@ -35,6 +35,8 @@
 #include<netinet/in.h>
 #include<unistd.h>
 #include<iostream>
+#include "../DataKeeper.h"
+#include "../AStar.h"
 
 class SocketServer; //class declaration, due to circular reference problem.
 
@@ -50,7 +52,7 @@ public:
    ConnectionHandler(SocketServer *parent, sockaddr_in *client, int clientSocketfd);
    virtual ~ConnectionHandler();
 
-   int start();
+   int start(DataKeeper &dataKeeper);
    void wait();
    void stop() { this->running = false; }
 
@@ -66,6 +68,8 @@ private:
    pthread_t   thread;
    SocketServer *parent;
    bool        running;
+   DataKeeper dataKeeper;
+   AStar pathPlanner = AStar();
 
    static void * threadHelper(void * handler){
    	  ((ConnectionHandler *)handler)->threadLoop();

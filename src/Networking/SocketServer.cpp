@@ -70,7 +70,7 @@ int SocketServer::listen(){
     return 0;
 }
 
-int SocketServer::threadedListen(){
+int SocketServer::threadedListen(DataKeeper &dataKeeper){
     this->socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (this->socketfd < 0){
     	perror("Socket Server: error opening socket.\n");
@@ -97,7 +97,7 @@ int SocketServer::threadedListen(){
 			//printf("Valid socket\n");
 			ConnectionHandler *conn = new ConnectionHandler(this, temp, tempSocketfd);
 			this->connections.push_back(conn);
-			conn->start();
+			conn->start(dataKeeper);
 		}
     }
 }

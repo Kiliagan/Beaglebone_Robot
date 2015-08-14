@@ -51,8 +51,9 @@ ConnectionHandler::~ConnectionHandler() {
 	cout << "Destroyed a Connection Handler" << endl;
 }
 
-int ConnectionHandler::start(){
+int ConnectionHandler::start(DataKeeper &dataKeeper){
 	//cout << "Starting the Connection Handler thread" << endl;
+	this->dataKeeper=dataKeeper;
 	return (pthread_create(&(this->thread), NULL, threadHelper, this)==0);
 }
 
@@ -85,12 +86,15 @@ void ConnectionHandler::threadLoop(){
     //cout << "*** Created a Connection Handler threaded Function" << endl;
     while(this->running){
        string rec = this->receive(1024);
+       dataKeeper.setPath(rec);
        cout << "Received from the client [" << rec << "]" << endl;
        string message("The Server says thanks!");
        cout << "Sending back [" << message << "]" << endl;
        cout << "  but going asleep for 5 seconds first...." << endl;
        usleep(5000000);
        this->send(message);
+       pathPlanner.newPath(dataKeeper);
+       pathPlanner.displayMap();
        this->running = false;
 	}
     //cout << "*** End of the Connection Handler Function" << endl;
