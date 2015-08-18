@@ -34,6 +34,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <string>
+#include <sstream>
 
 #include "SocketServer.h"
 
@@ -86,15 +87,24 @@ void ConnectionHandler::threadLoop(){
     //cout << "*** Created a Connection Handler threaded Function" << endl;
     while(this->running){
        string rec = this->receive(1024);
-       dataKeeper.setPath(rec);
        cout << "Received from the client [" << rec << "]" << endl;
-       string message("The Server says thanks!");
+       int x;
+       istringstream(rec.substr(0,2)) >> x;
+       dataKeeper.setCurrentX(x);
+       istringstream(rec.substr(3,2)) >> x;
+       dataKeeper.setCurrentY(x);
+       istringstream(rec.substr(6,2)) >> x;
+       dataKeeper.setDestX(x);
+       istringstream(rec.substr(9,2)) >> x;
+       dataKeeper.setDestY(x);
+       usleep(2000000);
+       pathPlanner.main(dataKeeper);
+       pathPlanner.displayMap();
+       string message(dataKeeper.getPath());
        cout << "Sending back [" << message << "]" << endl;
        cout << "  but going asleep for 5 seconds first...." << endl;
        usleep(5000000);
        this->send(message);
-       pathPlanner.newPath(dataKeeper);
-       pathPlanner.displayMap();
        this->running = false;
 	}
     //cout << "*** End of the Connection Handler Function" << endl;

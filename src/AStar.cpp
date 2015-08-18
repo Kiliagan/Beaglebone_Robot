@@ -226,13 +226,13 @@ string AStar::pathFind( const int & xStart, const int & yStart,
     return ""; // no route found
 }
 
-void AStar::main(DataKeeper &dataKeeper, int switchVal)
+void AStar::main(DataKeeper &dataKeeper)
 {
 
     srand(time(NULL));
 
     // randomly select start and finish locations
-    switch(switchVal)
+/*    switch(switchVal)
     {
         case 0: startX=0;startY=0;endX=n-1;endY=m-1; break;
         case 1: startX=0;startY=m-1;endX=n-1;endY=0; break;
@@ -242,7 +242,12 @@ void AStar::main(DataKeeper &dataKeeper, int switchVal)
         case 5: startX=n/2+1;startY=m-1;endX=n/2-1;endY=0; break;
         case 6: startX=0;startY=m/2-1;endX=n-1;endY=m/2+1; break;
         case 7: startX=n-1;startY=m/2+1;endX=0;endY=m/2-1; break;
-    }
+    }*/
+
+    startX=dataKeeper.getCurrentX();
+    startY=dataKeeper.getCurrentY();
+    endX=dataKeeper.getDestX();
+    endY=dataKeeper.getDestX();
 
     cout<<"Map Size (X,Y): "<<n<<","<<m<<endl;
     cout<<"Start: "<<startX<<","<<startY<<endl;

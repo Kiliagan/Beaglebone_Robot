@@ -32,6 +32,10 @@ DataKeeper::DataKeeper() {
 	heading = 0;
 	headingDeg = 0;
 	path = "No Path";
+	currentX = 0;
+	currentY = 0;
+	destX = 0;
+	destY = 0;
 }
 
 void DataKeeper::setIRDistance(float irDistance){
@@ -128,6 +132,22 @@ void DataKeeper::setHeadingDeg(float headingDeg){
 
 void DataKeeper::setPath(std::string path){
 	this->path = path;
+}
+
+void DataKeeper::setCurrentX(int currentX){
+	this->currentX = currentX;
+}
+
+void DataKeeper::setCurrentY(int currentY){
+	this->currentY = currentY;
+}
+
+void DataKeeper::setDestX(int destX){
+	this->destX = destX;
+}
+
+void DataKeeper::setDestY(int destY){
+	this->destY = destY;
 }
 
 DataKeeper::~DataKeeper() {

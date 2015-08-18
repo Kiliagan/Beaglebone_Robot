@@ -19,4 +19,6 @@ CentralHub::~CentralHub() {
 void CentralHub::start(DataKeeper &dataKeeper){
 	AStar pathPlanner = AStar();
 	Server server = Server(5050);
+
+	server.startServer(dataKeeper);
 }

@@ -16,9 +16,12 @@ RoamingBot::~RoamingBot() {
 	// TODO Auto-generated destructor stub
 }
 
-void RoamingBot::start(DataKeeper &dataKeeper){
-	MotorManager motorManager = MotorManager(2);
+void RoamingBot::start(DataKeeper &dataKeeper, int wheels){
+	MotorManager motorManager = MotorManager(wheels);
 	SensorManager sensorManager = SensorManager();
 	AStar pathPlanner = AStar();
 	Client client = Client("192.168.43.41", 5050);
+
+	pathPlanner.main(dataKeeper, 0);
+	client.startClient(dataKeeper);
 }

@@ -21,11 +21,18 @@ int main(int argc, char *argv[]) {
 //	int i = 0;
 	cout << "Robot Booting... " << endl;
 
-	if(*argv[1]=='client'){
-		cout << "Yay it worked" << endl;
+	DataKeeper dataKeeper = DataKeeper();
+
+	string type = argv[1];
+	int wheels = atoi(argv[2]);
+
+	if(type=="client"){
+		RoamingBot robot = RoamingBot();
+		robot.start(dataKeeper, wheels);
 	}
-	else if(*argv[1]=='server'){
-		cout << "This also worked" << endl;
+	else if(type=="server"){
+		CentralHub robot = CentralHub();
+		robot.start(dataKeeper);
 	}
 	else{
 		cout << "Incorrect value please enter either: client or server" << endl;
@@ -33,10 +40,6 @@ int main(int argc, char *argv[]) {
 
 	cout << "Robot Shutting Down... " << endl;
 
-//	server.startServer(dataKeeper);
-
-/*	pathPlanner.main(dataKeeper, 0);
-	client.startClient(dataKeeper);*/
 
 
 //	pathPlanner.main(dataKeeper, 0);

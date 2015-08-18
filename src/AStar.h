@@ -26,7 +26,7 @@ public:
 
 	AStar();
 
-	virtual void main(DataKeeper &dataKeeper, int switchVal);
+	virtual void main(DataKeeper &dataKeeper);
 	virtual void displayMap();
 	virtual std::string pathFind( const int & xStart, const int & yStart, const int & xFinish, const int & yFinish );
 	virtual void newObstacle(int xObj, int yObj);

@@ -12,6 +12,7 @@
 
 class DataKeeper {
 private:
+	int currentX, currentY, destX, destY;
 	float irDistance;
 	float gyroAccelX, gyroAccelY, gyroAccelZ, gyroRoll, gyroPitch;
 	float accelAccelX, accelAccelY, accelAccelZ, accelGyroX, accelGyroY, accelGyroZ, accelPitch, accelRoll, accelYaw;
@@ -72,6 +73,18 @@ public:
 
 	virtual void setPath(std::string path);
 	virtual std::string getPath(){return path;}
+
+	virtual void setCurrentX(int currentX);
+	virtual int getCurrentX(){return currentX;}
+
+	virtual void setCurrentY(int currentY);
+	virtual int getCurrentY(){return currentY;}
+
+	virtual void setDestX(int destX);
+	virtual int getDestX(){return destX;}
+
+	virtual void setDestY(int destY);
+	virtual int getDestY(){return destY;}
 
 	virtual ~DataKeeper();
 };

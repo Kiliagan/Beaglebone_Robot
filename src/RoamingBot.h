@@ -17,7 +17,7 @@
 class RoamingBot {
 public:
 	RoamingBot();
-	virtual void start(DataKeeper &dataKeeper);
+	virtual void start(DataKeeper &dataKeeper, int wheels);
 	virtual ~RoamingBot();
 };
 
