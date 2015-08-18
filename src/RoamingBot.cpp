@@ -25,11 +25,8 @@ void RoamingBot::start(DataKeeper &dataKeeper, int wheels){
 	Client client = Client("192.168.43.41", 5050);
 
 	client.startClient(dataKeeper);
-	cout << "I'm here 1" << endl;
 	cout << "My path is: " << dataKeeper.getPath() << endl;
 	pathPlanner.newPath(dataKeeper);
 	pathPlanner.setStartDest(dataKeeper);
-	cout << "I'm here 3" << endl;
 	pathPlanner.displayMap();
-	cout << "I'm here 7" << endl;
 }

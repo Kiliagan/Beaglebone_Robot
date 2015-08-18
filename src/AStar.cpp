@@ -267,7 +267,6 @@ void AStar::newObstacle(int xObj, int yObj){
 }
 
 void AStar::newPath(DataKeeper &dataKeeper){
-	cout << "I'm here 2" << endl;
 	this->path=dataKeeper.getPath();
 }
 
@@ -279,7 +278,6 @@ void AStar::setStartDest(DataKeeper &dataKeeper){
 }
 
 void AStar::displayMap(){
-	cout << "I'm here 4" << endl;
     // follow the route on the map and display it
 	if(path.length()>0)
 	{
@@ -299,7 +297,6 @@ void AStar::displayMap(){
 		map[x][y]=4;
 
 	}
-	cout << "I'm here 5" << endl;
 	// display the map with the route
 	for(int y=0;y<m;y++)
 	{
@@ -322,5 +319,4 @@ void AStar::displayMap(){
 			}
 		cout<<endl;
 	}
-	cout << "I'm here 6" << endl;
 }
