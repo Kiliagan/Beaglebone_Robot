@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
 	DataKeeper dataKeeper = DataKeeper();
 
 	string type = argv[1];
+
 	int wheels = atoi(argv[2]);
 
 	if(type=="client"){

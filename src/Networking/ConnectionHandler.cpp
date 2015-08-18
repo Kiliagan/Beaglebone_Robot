@@ -99,7 +99,6 @@ void ConnectionHandler::threadLoop(){
        dataKeeper.setDestY(x);
        usleep(2000000);
        pathPlanner.main(dataKeeper);
-       pathPlanner.displayMap();
        string message(dataKeeper.getPath());
        cout << "Sending back [" << message << "]" << endl;
        cout << "  but going asleep for 5 seconds first...." << endl;

@@ -7,6 +7,8 @@
 
 #include "RoamingBot.h"
 
+using namespace std;
+
 RoamingBot::RoamingBot() {
 	// TODO Auto-generated constructor stub
 
@@ -22,6 +24,12 @@ void RoamingBot::start(DataKeeper &dataKeeper, int wheels){
 	AStar pathPlanner = AStar();
 	Client client = Client("192.168.43.41", 5050);
 
-	pathPlanner.main(dataKeeper, 0);
 	client.startClient(dataKeeper);
+	cout << "I'm here 1" << endl;
+	cout << "My path is: " << dataKeeper.getPath() << endl;
+	pathPlanner.newPath(dataKeeper);
+	pathPlanner.setStartDest(dataKeeper);
+	cout << "I'm here 3" << endl;
+	pathPlanner.displayMap();
+	cout << "I'm here 7" << endl;
 }

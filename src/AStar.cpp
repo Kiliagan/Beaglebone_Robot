@@ -244,10 +244,7 @@ void AStar::main(DataKeeper &dataKeeper)
         case 7: startX=n-1;startY=m/2+1;endX=0;endY=m/2-1; break;
     }*/
 
-    startX=dataKeeper.getCurrentX();
-    startY=dataKeeper.getCurrentY();
-    endX=dataKeeper.getDestX();
-    endY=dataKeeper.getDestX();
+    setStartDest(dataKeeper);
 
     cout<<"Map Size (X,Y): "<<n<<","<<m<<endl;
     cout<<"Start: "<<startX<<","<<startY<<endl;
@@ -270,11 +267,19 @@ void AStar::newObstacle(int xObj, int yObj){
 }
 
 void AStar::newPath(DataKeeper &dataKeeper){
+	cout << "I'm here 2" << endl;
 	this->path=dataKeeper.getPath();
 }
 
-void AStar::displayMap(){
+void AStar::setStartDest(DataKeeper &dataKeeper){
+    this->startX=dataKeeper.getCurrentX();
+    this->startY=dataKeeper.getCurrentY();
+    this->endX=dataKeeper.getDestX();
+    this->endY=dataKeeper.getDestY();
+}
 
+void AStar::displayMap(){
+	cout << "I'm here 4" << endl;
     // follow the route on the map and display it
 	if(path.length()>0)
 	{
@@ -286,6 +291,7 @@ void AStar::displayMap(){
 		{
 			c =path.at(i);
 			j=atoi(&c);
+			cout << "test" << endl;
 			x=x+dx[j];
 			y=y+dy[j];
 			map[x][y]=3;
@@ -293,7 +299,7 @@ void AStar::displayMap(){
 		map[x][y]=4;
 
 	}
-
+	cout << "I'm here 5" << endl;
 	// display the map with the route
 	for(int y=0;y<m;y++)
 	{
@@ -316,5 +322,5 @@ void AStar::displayMap(){
 			}
 		cout<<endl;
 	}
-
+	cout << "I'm here 6" << endl;
 }

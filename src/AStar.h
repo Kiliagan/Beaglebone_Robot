@@ -31,6 +31,7 @@ public:
 	virtual std::string pathFind( const int & xStart, const int & yStart, const int & xFinish, const int & yFinish );
 	virtual void newObstacle(int xObj, int yObj);
 	virtual void newPath(DataKeeper &dataKeeper);
+	virtual void setStartDest(DataKeeper &dataKeeper);
 
 
 	virtual ~AStar();
