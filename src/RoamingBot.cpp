@@ -11,6 +11,9 @@
 
 using namespace std;
 
+/**
+ *
+ */
 RoamingBot::RoamingBot() {
 	UP = 0;
 	RIGHT = 90;
@@ -19,9 +22,19 @@ RoamingBot::RoamingBot() {
 
 }
 
+/**
+ *
+ */
 RoamingBot::~RoamingBot() {
 }
 
+/**
+ *
+ * @param dataKeeper
+ * @param sensorManager
+ * @param motorManager
+ * @param dir
+ */
 void RoamingBot::direction(DataKeeper &dataKeeper, SensorManager &sensorManager, MotorManager &motorManager, int dir){
 
 	sensorManager.readSensors(dataKeeper);
@@ -65,6 +78,11 @@ void RoamingBot::direction(DataKeeper &dataKeeper, SensorManager &sensorManager,
 	}
 }
 
+/**
+ *
+ * @param dataKeeper
+ * @param wheels
+ */
 void RoamingBot::start(DataKeeper &dataKeeper, int wheels){
 	MotorManager motorManager = MotorManager(wheels);
 	SensorManager sensorManager = SensorManager();

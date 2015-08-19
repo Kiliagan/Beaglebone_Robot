@@ -40,6 +40,12 @@
 
 using namespace std;
 
+/**
+ *
+ * @param parent
+ * @param client
+ * @param clientSocketfd
+ */
 ConnectionHandler::ConnectionHandler(SocketServer *parent, sockaddr_in *client, int clientSocketfd) {
 	this->parent = parent;
 	this->client = client;
@@ -47,21 +53,37 @@ ConnectionHandler::ConnectionHandler(SocketServer *parent, sockaddr_in *client, 
 	this->running = true;
 }
 
+/**
+ *
+ */
 ConnectionHandler::~ConnectionHandler() {
 	delete this->client;
 	cout << "Destroyed a Connection Handler" << endl;
 }
 
+/**
+ *
+ * @param dataKeeper
+ * @return
+ */
 int ConnectionHandler::start(DataKeeper &dataKeeper){
 	//cout << "Starting the Connection Handler thread" << endl;
 	this->dataKeeper=dataKeeper;
 	return (pthread_create(&(this->thread), NULL, threadHelper, this)==0);
 }
 
+/**
+ *
+ */
 void ConnectionHandler::wait(){
 	(void) pthread_join(this->thread, NULL);
 }
 
+/**
+ *
+ * @param message
+ * @return
+ */
 int ConnectionHandler::send(std::string message){
 	const char *writeBuffer = message.data();
 	int length = message.length();
@@ -73,6 +95,11 @@ int ConnectionHandler::send(std::string message){
     return 0;
 }
 
+/**
+ *
+ * @param size
+ * @return
+ */
 string ConnectionHandler::receive(int size=1024){
     char readBuffer[size];
     bzero(readBuffer, size);
@@ -83,6 +110,9 @@ string ConnectionHandler::receive(int size=1024){
     return string(readBuffer);
 }
 
+/**
+ *
+ */
 void ConnectionHandler::threadLoop(){
     //cout << "*** Created a Connection Handler threaded Function" << endl;
     while(this->running){

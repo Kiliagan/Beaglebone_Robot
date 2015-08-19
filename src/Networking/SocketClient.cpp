@@ -34,6 +34,11 @@
 #include <unistd.h>
 using namespace std;
 
+/**
+ *
+ * @param serverName
+ * @param portNumber
+ */
 SocketClient::SocketClient(std::string serverName, int portNumber) {
 	this->socketfd = -1;
 	this->server = NULL;
@@ -42,6 +47,10 @@ SocketClient::SocketClient(std::string serverName, int portNumber) {
 	this->isConnected = false;
 }
 
+/**
+ *
+ * @return
+ */
 int SocketClient::connectToServer(){
 
     socketfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -67,6 +76,11 @@ int SocketClient::connectToServer(){
     return 0;
 }
 
+/**
+ *
+ * @param message
+ * @return
+ */
 int SocketClient::send(std::string message){
 	const char *writeBuffer = message.data();
 	int length = message.length();
@@ -78,6 +92,11 @@ int SocketClient::send(std::string message){
     return 0;
 }
 
+/**
+ *
+ * @param size
+ * @return
+ */
 string SocketClient::receive(int size=1024){
     char readBuffer[size];
     bzero(readBuffer, size);
@@ -88,30 +107,19 @@ string SocketClient::receive(int size=1024){
     return string(readBuffer);
 }
 
-/*
-string SocketClient::receiveAll(){
-	//int recv_all(int sockfd, void *buf, size_t len, int flags)
-    size_t toread = len;
-    char  *bufptr = (char*) buf;
-    while (toread > 0)
-    {
-        ssize_t rsz = recv(sockfd, bufptr, toread, 0);
-        if (rsz <= 0)
-            return rsz;  //Error or other end closed cnnection
-        toread -= rsz;  // Read less next time
-        bufptr += rsz;  // Next buffer position to read into
-    }
-    return len;
-}
-*/
-
-
+/**
+ *
+ * @return
+ */
 int SocketClient::disconnectFromServer(){
 	this->isConnected = false;
 	close(this->socketfd);
 	return 0;
 }
 
+/**
+ *
+ */
 SocketClient::~SocketClient() {
 	if (this->isConnected == true){
 		disconnectFromServer();

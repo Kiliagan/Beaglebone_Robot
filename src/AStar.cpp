@@ -20,6 +20,9 @@ static int dy[dir]={0, 1, 0, -1};
 //static int dx[dir]={1, 1, 0, -1, -1, -1, 0, 1};
 //static int dy[dir]={0, 1, 1, 1, 0, -1, -1, -1};
 
+/**
+ *
+ */
 AStar::AStar(){
 
     // create empty map
@@ -40,10 +43,16 @@ AStar::AStar(){
 
 }
 
+/**
+ *
+ */
 AStar::~AStar(){
 
 }
 
+/**
+ *
+ */
 class node
 {
     // current position
@@ -63,17 +72,32 @@ class node
         int getLevel() const {return level;}
         int getPriority() const {return priority;}
 
+        /**
+         *
+         * @param xDest
+         * @param yDest
+         */
         void updatePriority(const int & xDest, const int & yDest)
         {
              priority=level+estimate(xDest, yDest)*10; //A*
         }
 
+        /**
+         *
+         * @param i
+         */
         // give better priority to going strait instead of diagonally
         void nextLevel(const int & i) // i: direction
         {
              level+=(dir==8?(i%2==0?10:14):10);
         }
 
+        /**
+         *
+         * @param xDest
+         * @param yDest
+         * @return
+         */
         // Estimation function for the remaining distance to the goal.
         const int & estimate(const int & xDest, const int & yDest) const
         {
@@ -94,12 +118,26 @@ class node
         }
 };
 
+/**
+ *
+ * @param a
+ * @param b
+ * @return
+ */
 // Determine priority (in the priority queue)
 bool operator<(const node & a, const node & b)
 {
   return a.getPriority() > b.getPriority();
 }
 
+/**
+ *
+ * @param xStart
+ * @param yStart
+ * @param xFinish
+ * @param yFinish
+ * @return
+ */
 // A-star algorithm.
 // The route returned is a string of direction digits.
 string AStar::pathFind( const int & xStart, const int & yStart,
@@ -226,23 +264,14 @@ string AStar::pathFind( const int & xStart, const int & yStart,
     return ""; // no route found
 }
 
+/**
+ *
+ * @param dataKeeper
+ */
 void AStar::main(DataKeeper &dataKeeper)
 {
 
     srand(time(NULL));
-
-    // randomly select start and finish locations
-/*    switch(switchVal)
-    {
-        case 0: startX=0;startY=0;endX=n-1;endY=m-1; break;
-        case 1: startX=0;startY=m-1;endX=n-1;endY=0; break;
-        case 2: startX=n/2-1;startY=m/2-1;endX=n/2+1;endY=m/2+1; break;
-        case 3: startX=n/2-1;startY=m/2+1;endX=n/2+1;endY=m/2-1; break;
-        case 4: startX=n/2-1;startY=0;endX=n/2+1;endY=m-1; break;
-        case 5: startX=n/2+1;startY=m-1;endX=n/2-1;endY=0; break;
-        case 6: startX=0;startY=m/2-1;endX=n-1;endY=m/2+1; break;
-        case 7: startX=n-1;startY=m/2+1;endX=0;endY=m/2-1; break;
-    }*/
 
     setStartDest(dataKeeper);
 
@@ -262,14 +291,27 @@ void AStar::main(DataKeeper &dataKeeper)
 
 }
 
+/**
+ *
+ * @param xObj
+ * @param yObj
+ */
 void AStar::newObstacle(int xObj, int yObj){
 	map[xObj][yObj] = 1;
 }
 
+/**
+ *
+ * @param dataKeeper
+ */
 void AStar::newPath(DataKeeper &dataKeeper){
 	this->path=dataKeeper.getPath();
 }
 
+/**
+ *
+ * @param dataKeeper
+ */
 void AStar::setStartDest(DataKeeper &dataKeeper){
     this->startX=dataKeeper.getCurrentX();
     this->startY=dataKeeper.getCurrentY();
@@ -277,6 +319,9 @@ void AStar::setStartDest(DataKeeper &dataKeeper){
     this->endY=dataKeeper.getDestY();
 }
 
+/**
+ *
+ */
 void AStar::displayMap(){
     // follow the route on the map and display it
 	if(path.length()>0)

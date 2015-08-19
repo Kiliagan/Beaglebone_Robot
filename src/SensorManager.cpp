@@ -12,10 +12,17 @@ ADXL345 gyroSensor = ADXL345(1,0x53);
 //MPU6050 accelSensor = MPU6050(1,0x68);
 GY273 magSensor = GY273(1,0x1E);
 
+/**
+ *
+ */
 SensorManager::SensorManager() {
 
 }
 
+/**
+ *
+ * @param dataKeeper
+ */
 void SensorManager::readSensors(DataKeeper &dataKeeper){
 	//num = num + 1;
 

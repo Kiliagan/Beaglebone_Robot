@@ -36,6 +36,10 @@
 #include <algorithm>
 using namespace std;
 
+/**
+ *
+ * @param portNumber
+ */
 SocketServer::SocketServer(int portNumber) {
 	this->socketfd = -1;
 	this->clientSocketfd = -1;
@@ -44,6 +48,10 @@ SocketServer::SocketServer(int portNumber) {
 	this->connections = vector<ConnectionHandler *>();
 }
 
+/**
+ *
+ * @return
+ */
 int SocketServer::listen(){
     this->socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (this->socketfd < 0){
@@ -70,6 +78,11 @@ int SocketServer::listen(){
     return 0;
 }
 
+/**
+ *
+ * @param dataKeeper
+ * @return
+ */
 int SocketServer::threadedListen(DataKeeper &dataKeeper){
     this->socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (this->socketfd < 0){
@@ -102,6 +115,11 @@ int SocketServer::threadedListen(DataKeeper &dataKeeper){
     }
 }
 
+/**
+ *
+ * @param message
+ * @return
+ */
 int SocketServer::send(std::string message){
 	const char *writeBuffer = message.data();
 	int length = message.length();
@@ -122,6 +140,10 @@ string SocketServer::receive(int size=1024){
     return string(readBuffer);
 }
 
+/**
+ *
+ * @param connection
+ */
 void SocketServer::notifyHandlerDeath(ConnectionHandler *connection){
 	std::vector<ConnectionHandler *>::iterator it;
 	for(it = this->connections.begin(); it <= this->connections.end(); it++ ){
@@ -133,6 +155,9 @@ void SocketServer::notifyHandlerDeath(ConnectionHandler *connection){
 	delete connection;
 }
 
+/**
+ *
+ */
 SocketServer::~SocketServer() {
 	close(this->socketfd);
 	close(this->clientSocketfd);

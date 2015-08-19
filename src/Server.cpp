@@ -8,14 +8,25 @@
 #include "Server.h"
 #include "Networking/SocketServer.h"
 
+/**
+ *
+ * @param port
+ */
 Server::Server(int port) {
 	this->port=port;
 }
 
+/**
+ *
+ */
 Server::~Server() {
 	// TODO Auto-generated destructor stub
 }
 
+/**
+ *
+ * @param dataKeeper
+ */
 void Server::startServer(DataKeeper &dataKeeper){
 	std::cout << "Starting EBB Server Example" << std::endl;
 	SocketServer server(port);

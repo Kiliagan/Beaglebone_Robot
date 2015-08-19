@@ -10,14 +10,27 @@
 #include "Client.h"
 #include "Networking/SocketClient.h"
 
+/**
+ *
+ * @param ip
+ * @param port
+ */
 Client::Client(std::string ip, int port) {
 	this->ip=ip;
 	this->port=port;
 }
 
+/**
+ *
+ */
 Client::~Client() {
 }
 
+/**
+ *
+ * @param dataKeeper
+ * @param option
+ */
 void Client::startClient(DataKeeper &dataKeeper, int option){
 
 	std::cout << "Starting EBB Client Example" << std::endl;
