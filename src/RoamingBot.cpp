@@ -30,10 +30,10 @@ void RoamingBot::direction(DataKeeper &dataKeeper, SensorManager &sensorManager,
 	int tolerance = 3;
 
 	switch(dir){
-	case 0: finAngle = RIGHT;break;
-	case 1: finAngle = DOWN;break;
-	case 2: finAngle = LEFT;break;
-	case 3: finAngle = UP;break;
+	case 0: finAngle = DOWN;break;
+	case 1: finAngle = LEFT;break;
+	case 2: finAngle = UP;break;
+	case 3: finAngle = RIGHT;break;
 	}
 
 	lowFinAngle = finAngle - tolerance;

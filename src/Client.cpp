@@ -41,7 +41,7 @@ void Client::startClient(DataKeeper &dataKeeper, int option){
 		ss << dataKeeper.getCurrentX() << " ";
 		if(dataKeeper.getCurrentY() < 10){ ss << "0";}
 		ss << dataKeeper.getCurrentY() << " ";
-		ss << dataKeeper.getDestX();
+		ss << dataKeeper.getFacing();
 	}
 	std::string message = ss.str();
 	std::cout << "Sending [" << message << "]" << std::endl;

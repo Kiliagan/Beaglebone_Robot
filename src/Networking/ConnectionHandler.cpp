@@ -106,10 +106,10 @@ void ConnectionHandler::threadLoop(){
     	   dataKeeper.setCurrentY(x);
     	   istringstream(rec.substr(8,1)) >> x;
     	   switch(x){
-    	   case 0: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()+3);break;
-    	   case 1: pathPlanner.newObstacle(dataKeeper.getCurrentX()+3, dataKeeper.getCurrentY());break;
-    	   case 2: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()-3);break;
-    	   case 3: pathPlanner.newObstacle(dataKeeper.getCurrentX()-3, dataKeeper.getCurrentY());break;
+    	   case 0: pathPlanner.newObstacle(dataKeeper.getCurrentX()+3, dataKeeper.getCurrentY());break;
+    	   case 1: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()-3);break;
+    	   case 2: pathPlanner.newObstacle(dataKeeper.getCurrentX()-3, dataKeeper.getCurrentY());break;
+    	   case 3: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()+3);break;
     	   }
        }
        usleep(2000000);
