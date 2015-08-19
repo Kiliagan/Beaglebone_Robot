@@ -6,16 +6,63 @@
  */
 
 #include "RoamingBot.h"
+#include <sstream>
+#include <unistd.h>
 
 using namespace std;
 
 RoamingBot::RoamingBot() {
-	// TODO Auto-generated constructor stub
+	UP = 0;
+	RIGHT = 90;
+	DOWN = 180;
+	LEFT = 270;
 
 }
 
 RoamingBot::~RoamingBot() {
-	// TODO Auto-generated destructor stub
+}
+
+void RoamingBot::direction(DataKeeper &dataKeeper, SensorManager &sensorManager, MotorManager &motorManager, int dir){
+
+	sensorManager.readSensors(dataKeeper);
+	float curAngle = dataKeeper.getHeadingDeg();
+	float finAngle, lowFinAngle, highFinAngle;
+	int tolerance = 3;
+
+	switch(dir){
+	case 0: finAngle = RIGHT;break;
+	case 1: finAngle = DOWN;break;
+	case 2: finAngle = LEFT;break;
+	case 3: finAngle = UP;break;
+	}
+
+	lowFinAngle = finAngle - tolerance;
+	highFinAngle = finAngle + tolerance;
+
+	if(lowFinAngle > 360){ lowFinAngle -= 360;}
+	else if(lowFinAngle < 0){ lowFinAngle += 360;}
+
+	if(highFinAngle > 360){ highFinAngle -= 360;}
+	else if(highFinAngle < 0){ highFinAngle += 360;}
+
+	if(lowFinAngle > highFinAngle){
+		while(curAngle < lowFinAngle && curAngle > highFinAngle){
+
+			motorManager.left();
+			sensorManager.readSensors(dataKeeper);
+			curAngle = dataKeeper.getHeadingDeg();
+			usleep(500000);
+		}
+	}
+	else{
+		while(curAngle < (lowFinAngle) || curAngle > (highFinAngle)){
+
+			motorManager.left();
+			sensorManager.readSensors(dataKeeper);
+			curAngle = dataKeeper.getHeadingDeg();
+			usleep(500000);
+		}
+	}
 }
 
 void RoamingBot::start(DataKeeper &dataKeeper, int wheels){
@@ -24,9 +71,30 @@ void RoamingBot::start(DataKeeper &dataKeeper, int wheels){
 	AStar pathPlanner = AStar();
 	Client client = Client("192.168.43.41", 5050);
 
-	client.startClient(dataKeeper);
-	cout << "My path is: " << dataKeeper.getPath() << endl;
+	client.startClient(dataKeeper, 1);
+	std::string path = dataKeeper.getPath();
 	pathPlanner.newPath(dataKeeper);
 	pathPlanner.setStartDest(dataKeeper);
 	pathPlanner.displayMap();
+
+	int i = 0;
+
+	while(i<path.length()){
+		int x;
+
+		istringstream(path.substr(i,1)) >> x;
+		dataKeeper.setFacing(x);
+	//	direction(dataKeeper, sensorManager, motorManager, x);
+
+		motorManager.forward();
+		i++;
+		sensorManager.readSensors(dataKeeper);
+		if(dataKeeper.getIRDistance() < 100){
+			client.startClient(dataKeeper, 2);
+			client.startClient(dataKeeper, 1);
+			path = dataKeeper.getPath();
+			i = 0;
+		}
+
+	}
 }

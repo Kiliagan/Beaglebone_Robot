@@ -12,7 +12,7 @@
 
 class DataKeeper {
 private:
-	int currentX, currentY, destX, destY;
+	int currentX, currentY, destX, destY, facing;
 	float irDistance;
 	float gyroAccelX, gyroAccelY, gyroAccelZ, gyroRoll, gyroPitch;
 	float accelAccelX, accelAccelY, accelAccelZ, accelGyroX, accelGyroY, accelGyroZ, accelPitch, accelRoll, accelYaw;
@@ -85,6 +85,9 @@ public:
 
 	virtual void setDestY(int destY);
 	virtual int getDestY(){return destY;}
+
+	virtual void setFacing(int facing);
+	virtual int getFacing(){return facing;}
 
 	virtual ~DataKeeper();
 };

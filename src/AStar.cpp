@@ -289,7 +289,6 @@ void AStar::displayMap(){
 		{
 			c =path.at(i);
 			j=atoi(&c);
-			cout << "test" << endl;
 			x=x+dx[j];
 			y=y+dy[j];
 			map[x][y]=3;

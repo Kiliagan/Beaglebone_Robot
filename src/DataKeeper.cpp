@@ -36,6 +36,7 @@ DataKeeper::DataKeeper() {
 	currentY = 0;
 	destX = 0;
 	destY = 0;
+	facing = 0;
 }
 
 void DataKeeper::setIRDistance(float irDistance){
@@ -148,6 +149,10 @@ void DataKeeper::setDestX(int destX){
 
 void DataKeeper::setDestY(int destY){
 	this->destY = destY;
+}
+
+void DataKeeper::setFacing(int facing){
+	this->facing = facing;
 }
 
 DataKeeper::~DataKeeper() {

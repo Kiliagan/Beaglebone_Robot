@@ -15,9 +15,15 @@
 #include "Client.h"
 
 class RoamingBot {
+private:
+	int UP;
+	int RIGHT;
+	int DOWN;
+	int LEFT;
 public:
 	RoamingBot();
 	virtual void start(DataKeeper &dataKeeper, int wheels);
+	virtual void direction(DataKeeper &dataKeeper, SensorManager &sensorManager, MotorManager &motorManager, int dir);
 	virtual ~RoamingBot();
 };
 

@@ -27,6 +27,11 @@ int main(int argc, char *argv[]) {
 
 	int wheels = atoi(argv[2]);
 
+	dataKeeper.setCurrentX(atoi(argv[3]));
+	dataKeeper.setCurrentY(atoi(argv[4]));
+	dataKeeper.setDestX(atoi(argv[5]));
+	dataKeeper.setDestY(atoi(argv[6]));
+
 	if(type=="client"){
 		RoamingBot robot = RoamingBot();
 		robot.start(dataKeeper, wheels);

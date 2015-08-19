@@ -18,21 +18,32 @@ Client::Client(std::string ip, int port) {
 Client::~Client() {
 }
 
-void Client::startClient(DataKeeper &dataKeeper){
+void Client::startClient(DataKeeper &dataKeeper, int option){
 
 	std::cout << "Starting EBB Client Example" << std::endl;
 	SocketClient sc(ip, port);
 	sc.connectToServer();
-	std::string message("00 00 52 30");
-	int x;
-	std::istringstream(message.substr(0,2)) >> x;
-	dataKeeper.setCurrentX(x);
-	std::istringstream(message.substr(3,2)) >> x;
-	dataKeeper.setCurrentY(x);
-	std::istringstream(message.substr(6,2)) >> x;
-	dataKeeper.setDestX(x);
-	std::istringstream(message.substr(9,2)) >> x;
-	dataKeeper.setDestY(x);
+	//std::string message("00 00 52 30");
+	std::stringstream ss;
+	if(option==1){
+		ss << option << " ";
+		if(dataKeeper.getCurrentX() < 10){ ss << "0";}
+		ss << dataKeeper.getCurrentX() << " ";
+		if(dataKeeper.getCurrentY() < 10){ ss << "0";}
+		ss << dataKeeper.getCurrentY() << " ";
+		if(dataKeeper.getDestX() < 10){ ss << "0";}
+		ss << dataKeeper.getDestX() << " ";
+		if(dataKeeper.getDestY() < 10){ ss << "0";}
+		ss << dataKeeper.getDestY();
+	}else if(option==2){
+		ss << option << " ";
+		if(dataKeeper.getCurrentX() < 10){ ss << "0";}
+		ss << dataKeeper.getCurrentX() << " ";
+		if(dataKeeper.getCurrentY() < 10){ ss << "0";}
+		ss << dataKeeper.getCurrentY() << " ";
+		ss << dataKeeper.getDestX();
+	}
+	std::string message = ss.str();
 	std::cout << "Sending [" << message << "]" << std::endl;
 	sc.send(message);
 	std::string rec = sc.receive(1024);

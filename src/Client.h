@@ -17,7 +17,7 @@ private:
 	int port;
 public:
 	Client(std::string ip, int port);
-	virtual void startClient(DataKeeper &dataKeeper);
+	virtual void startClient(DataKeeper &dataKeeper, int option);
 	virtual ~Client();
 };
 

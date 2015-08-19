@@ -88,15 +88,30 @@ void ConnectionHandler::threadLoop(){
     while(this->running){
        string rec = this->receive(1024);
        cout << "Received from the client [" << rec << "]" << endl;
-       int x;
-       istringstream(rec.substr(0,2)) >> x;
-       dataKeeper.setCurrentX(x);
-       istringstream(rec.substr(3,2)) >> x;
-       dataKeeper.setCurrentY(x);
-       istringstream(rec.substr(6,2)) >> x;
-       dataKeeper.setDestX(x);
-       istringstream(rec.substr(9,2)) >> x;
-       dataKeeper.setDestY(x);
+       int x, option;
+       istringstream(rec.substr(0,1)) >> option;
+       if(option==1){
+    	   istringstream(rec.substr(2,2)) >> x;
+    	   dataKeeper.setCurrentX(x);
+    	   istringstream(rec.substr(5,2)) >> x;
+    	   dataKeeper.setCurrentY(x);
+    	   istringstream(rec.substr(8,2)) >> x;
+    	   dataKeeper.setDestX(x);
+    	   istringstream(rec.substr(11,2)) >> x;
+    	   dataKeeper.setDestY(x);
+       }else if(option==2){
+    	   istringstream(rec.substr(2,2)) >> x;
+    	   dataKeeper.setCurrentX(x);
+    	   istringstream(rec.substr(5,2)) >> x;
+    	   dataKeeper.setCurrentY(x);
+    	   istringstream(rec.substr(8,1)) >> x;
+    	   switch(x){
+    	   case 0: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()+3);break;
+    	   case 1: pathPlanner.newObstacle(dataKeeper.getCurrentX()+3, dataKeeper.getCurrentY());break;
+    	   case 2: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()-3);break;
+    	   case 3: pathPlanner.newObstacle(dataKeeper.getCurrentX()-3, dataKeeper.getCurrentY());break;
+    	   }
+       }
        usleep(2000000);
        pathPlanner.main(dataKeeper);
        string message(dataKeeper.getPath());
