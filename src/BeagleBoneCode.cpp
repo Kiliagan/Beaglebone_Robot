@@ -16,14 +16,19 @@
 
 using namespace std;
 
+/**
+ *
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc, char *argv[]) {
 
-//	int i = 0;
 	cout << "Robot Booting... " << endl;
 
 	DataKeeper dataKeeper = DataKeeper();
 
-	string type = argv[1];
+	string job = argv[1];
 
 	int wheels = atoi(argv[2]);
 
@@ -32,26 +37,25 @@ int main(int argc, char *argv[]) {
 	dataKeeper.setDestX(atoi(argv[5]));
 	dataKeeper.setDestY(atoi(argv[6]));
 
-	if(type=="client"){
+	cout << "Hello!\nLet's see what job I've been assigned." << endl;
+
+	if(job=="driver"){
+		cout << "My job is as driver." << endl;
 		RoamingBot robot = RoamingBot();
 		robot.start(dataKeeper, wheels);
 	}
-	else if(type=="server"){
+	else if(job=="planner"){
+		cout << "My job is as planner." << endl;
 		CentralHub robot = CentralHub();
-		robot.start(dataKeeper);
+		robot.start();
 	}
 	else{
-		cout << "Incorrect value please enter either: client or server" << endl;
+		cout << "Huh?\n" << job << ", that's not a job. The jobs are 'driver' and 'planner'" << endl;
 	}
 
+	cout << "Goodbye. Hope to see you again." << endl;
+
 	cout << "Robot Shutting Down... " << endl;
-
-
-
-//	pathPlanner.main(dataKeeper, 0);
-//	pathPlanner.displayMap();
-//	cout << "Heres the Path: " << pathPlanner.pathFind(0,0,57,43) << endl;
-//	pathPlanner.displayMap();
 
 	return 0;
 }

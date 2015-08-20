@@ -52,7 +52,7 @@ public:
    ConnectionHandler(SocketServer *parent, sockaddr_in *client, int clientSocketfd);
    virtual ~ConnectionHandler();
 
-   int start(DataKeeper &dataKeeper);
+   int start();
    void wait();
    void stop() { this->running = false; }
 
@@ -68,7 +68,6 @@ private:
    pthread_t   thread;
    SocketServer *parent;
    bool        running;
-   DataKeeper dataKeeper;
    AStar pathPlanner = AStar();
 
    static void * threadHelper(void * handler){

@@ -26,6 +26,7 @@ DataKeeper::DataKeeper() {
 	gyroRoll = 0;
 	gyroPitch = 0;
 	irDistance = 0;
+	irRaw = 0;
 	magX = 0;
 	magY = 0;
 	magZ = 0;
@@ -48,6 +49,14 @@ DataKeeper::DataKeeper() {
  */
 void DataKeeper::setIRDistance(float irDistance){
 	this->irDistance = irDistance;
+}
+
+/**
+ *
+ * @param irRaw
+ */
+void DataKeeper::setIRRaw(float irRaw){
+	this->irRaw = irRaw;
 }
 
 /**

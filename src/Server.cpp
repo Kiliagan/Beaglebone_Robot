@@ -27,10 +27,10 @@ Server::~Server() {
  *
  * @param dataKeeper
  */
-void Server::startServer(DataKeeper &dataKeeper){
+void Server::startServer(){
 	std::cout << "Starting EBB Server Example" << std::endl;
 	SocketServer server(port);
 	std::cout << "Listening for a connection..." << std::endl;
-	server.threadedListen(dataKeeper);
+	server.threadedListen();
 	std::cout << "End of EBB Server Example" << std::endl;
 }

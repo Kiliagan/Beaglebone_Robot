@@ -13,7 +13,7 @@
 class DataKeeper {
 private:
 	int currentX, currentY, destX, destY, facing;
-	float irDistance;
+	float irDistance, irRaw;
 	float gyroAccelX, gyroAccelY, gyroAccelZ, gyroRoll, gyroPitch;
 	float accelAccelX, accelAccelY, accelAccelZ, accelGyroX, accelGyroY, accelGyroZ, accelPitch, accelRoll, accelYaw;
 	float magX, magY, magZ, angX, angY, angZ, heading, headingDeg;
@@ -23,6 +23,8 @@ public:
 
 	virtual void setIRDistance(float irDistance);
 	virtual float getIRDistance(){return irDistance;}
+	virtual void setIRRaw(float irRaw);
+	virtual float getIRRaw(){return irRaw;}
 
 	virtual void setGyroAccelX( float gyroAccelX);
 	virtual float getGyroAccelX(){return gyroAccelX;}

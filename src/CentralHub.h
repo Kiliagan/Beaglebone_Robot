@@ -15,7 +15,7 @@
 class CentralHub {
 public:
 	CentralHub();
-	virtual void start(DataKeeper &dataKeeper);
+	virtual void start();
 	virtual ~CentralHub();
 };
 

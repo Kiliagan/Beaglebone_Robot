@@ -27,6 +27,7 @@ void SensorManager::readSensors(DataKeeper &dataKeeper){
 	//num = num + 1;
 
 	dataKeeper.setIRDistance(irDistance.getDistance());
+	dataKeeper.setIRRaw(irDistance.getDistanceRAW());
 
 /*	accelSensor.readSensorState();
 	dataKeeper.setAccelAccelX(accelSensor.getAccelerationX());

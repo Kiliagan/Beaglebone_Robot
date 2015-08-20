@@ -26,9 +26,9 @@ CentralHub::~CentralHub() {
  *
  * @param dataKeeper
  */
-void CentralHub::start(DataKeeper &dataKeeper){
+void CentralHub::start(){
 	AStar pathPlanner = AStar();
 	Server server = Server(5050);
 
-	server.startServer(dataKeeper);
+	server.startServer();
 }

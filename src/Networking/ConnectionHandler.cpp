@@ -66,9 +66,8 @@ ConnectionHandler::~ConnectionHandler() {
  * @param dataKeeper
  * @return
  */
-int ConnectionHandler::start(DataKeeper &dataKeeper){
+int ConnectionHandler::start(){
 	//cout << "Starting the Connection Handler thread" << endl;
-	this->dataKeeper=dataKeeper;
 	return (pthread_create(&(this->thread), NULL, threadHelper, this)==0);
 }
 
@@ -115,6 +114,7 @@ string ConnectionHandler::receive(int size=1024){
  */
 void ConnectionHandler::threadLoop(){
     //cout << "*** Created a Connection Handler threaded Function" << endl;
+	DataKeeper dataKeeper = DataKeeper();
     while(this->running){
        string rec = this->receive(1024);
        cout << "Received from the client [" << rec << "]" << endl;

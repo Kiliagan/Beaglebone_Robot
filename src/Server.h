@@ -15,7 +15,7 @@ private:
 	int port;
 public:
 	Server(int port);
-	virtual void startServer(DataKeeper &dataKeeper);
+	virtual void startServer();
 	virtual ~Server();
 };
 
