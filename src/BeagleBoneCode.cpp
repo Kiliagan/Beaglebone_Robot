@@ -30,17 +30,18 @@ int main(int argc, char *argv[]) {
 
 	string job = argv[1];
 
-	int wheels = atoi(argv[2]);
-
-	dataKeeper.setCurrentX(atoi(argv[3]));
-	dataKeeper.setCurrentY(atoi(argv[4]));
-	dataKeeper.setDestX(atoi(argv[5]));
-	dataKeeper.setDestY(atoi(argv[6]));
-
 	cout << "Hello!\nLet's see what job I've been assigned." << endl;
 
 	if(job=="driver"){
 		cout << "My job is as driver." << endl;
+		int wheels = atoi(argv[2]);
+
+		dataKeeper.setCurrentX(atoi(argv[3]));
+		dataKeeper.setCurrentY(atoi(argv[4]));
+		dataKeeper.setDestX(atoi(argv[5]));
+		dataKeeper.setDestY(atoi(argv[6]));
+
+		dataKeeper.setIP(argv[7]);
 		RoamingBot robot = RoamingBot();
 		robot.start(dataKeeper, wheels);
 	}

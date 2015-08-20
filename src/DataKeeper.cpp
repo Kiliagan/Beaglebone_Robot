@@ -36,6 +36,7 @@ DataKeeper::DataKeeper() {
 	heading = 0;
 	headingDeg = 0;
 	path = "No Path";
+	ip = "No IP";
 	currentX = 0;
 	currentY = 0;
 	destX = 0;
@@ -241,6 +242,14 @@ void DataKeeper::setHeadingDeg(float headingDeg){
  */
 void DataKeeper::setPath(std::string path){
 	this->path = path;
+}
+
+/**
+ *
+ * @param ip
+ */
+void DataKeeper::setIP(std::string ip){
+	this->ip = ip;
 }
 
 /**

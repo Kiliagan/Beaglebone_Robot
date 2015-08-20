@@ -87,7 +87,7 @@ void RoamingBot::start(DataKeeper &dataKeeper, int wheels){
 	MotorManager motorManager = MotorManager(wheels);
 	SensorManager sensorManager = SensorManager();
 	AStar pathPlanner = AStar();
-	Client client = Client("192.168.43.41", 5050);
+	Client client = Client(dataKeeper.getIP(), 5050);
 
 	client.startClient(dataKeeper, 1);
 	std::string path = dataKeeper.getPath();

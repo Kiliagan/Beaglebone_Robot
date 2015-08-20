@@ -17,7 +17,7 @@ private:
 	float gyroAccelX, gyroAccelY, gyroAccelZ, gyroRoll, gyroPitch;
 	float accelAccelX, accelAccelY, accelAccelZ, accelGyroX, accelGyroY, accelGyroZ, accelPitch, accelRoll, accelYaw;
 	float magX, magY, magZ, angX, angY, angZ, heading, headingDeg;
-	std::string path;
+	std::string path, ip;
 public:
 	DataKeeper();
 
@@ -75,6 +75,9 @@ public:
 
 	virtual void setPath(std::string path);
 	virtual std::string getPath(){return path;}
+
+	virtual void setIP(std::string ip);
+	virtual std::string getIP(){return ip;}
 
 	virtual void setCurrentX(int currentX);
 	virtual int getCurrentX(){return currentX;}
