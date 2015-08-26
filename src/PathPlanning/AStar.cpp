@@ -21,7 +21,7 @@ static int dy[dir]={0, 1, 0, -1};
 //static int dy[dir]={0, 1, 1, 1, 0, -1, -1, -1};
 
 /**
- *
+ * Generates map for the robots to plan on
  */
 AStar::AStar(){
 
@@ -43,15 +43,12 @@ AStar::AStar(){
 
 }
 
-/**
- *
- */
 AStar::~AStar(){
 
 }
 
 /**
- *
+ * class to creates node objects nessiscary for A* path planning
  */
 class node
 {
@@ -93,7 +90,7 @@ class node
         }
 
         /**
-         *
+         * estimates the distance from node to the destination
          * @param xDest
          * @param yDest
          * @return
@@ -119,7 +116,7 @@ class node
 };
 
 /**
- *
+ * overrides < operator to have a new purpose
  * @param a
  * @param b
  * @return
@@ -131,7 +128,7 @@ bool operator<(const node & a, const node & b)
 }
 
 /**
- *
+ * Finds the Path that the robots are to follow
  * @param xStart
  * @param yStart
  * @param xFinish
@@ -265,7 +262,7 @@ string AStar::pathFind( const int & xStart, const int & yStart,
 }
 
 /**
- *
+ * Sets up and runs path plan generating
  * @param dataKeeper
  */
 void AStar::main(DataKeeper &dataKeeper)
@@ -292,7 +289,7 @@ void AStar::main(DataKeeper &dataKeeper)
 }
 
 /**
- *
+ * adds a new object to the map
  * @param xObj
  * @param yObj
  */
@@ -301,7 +298,7 @@ void AStar::newObstacle(int xObj, int yObj){
 }
 
 /**
- *
+ * inserts a path generated elsewhere into the code
  * @param dataKeeper
  */
 void AStar::newPath(DataKeeper &dataKeeper){
@@ -309,7 +306,7 @@ void AStar::newPath(DataKeeper &dataKeeper){
 }
 
 /**
- *
+ * sets current position and destination
  * @param dataKeeper
  */
 void AStar::setStartDest(DataKeeper &dataKeeper){
@@ -320,7 +317,7 @@ void AStar::setStartDest(DataKeeper &dataKeeper){
 }
 
 /**
- *
+ * Outputs the map with path drawn on it
  */
 void AStar::displayMap(){
     // follow the route on the map and display it

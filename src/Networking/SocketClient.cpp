@@ -35,7 +35,7 @@
 using namespace std;
 
 /**
- *
+ * Creates Client Socket
  * @param serverName
  * @param portNumber
  */
@@ -48,7 +48,7 @@ SocketClient::SocketClient(std::string serverName, int portNumber) {
 }
 
 /**
- *
+ * Sends out hand shake to talk to the server
  * @return
  */
 int SocketClient::connectToServer(){
@@ -77,7 +77,7 @@ int SocketClient::connectToServer(){
 }
 
 /**
- *
+ * sends string message to server
  * @param message
  * @return
  */
@@ -93,7 +93,7 @@ int SocketClient::send(std::string message){
 }
 
 /**
- *
+ * reads in string sent from the server
  * @param size
  * @return
  */
@@ -108,7 +108,7 @@ string SocketClient::receive(int size=1024){
 }
 
 /**
- *
+ * releases connection to the server
  * @return
  */
 int SocketClient::disconnectFromServer(){
@@ -118,7 +118,7 @@ int SocketClient::disconnectFromServer(){
 }
 
 /**
- *
+ * destroys socket
  */
 SocketClient::~SocketClient() {
 	if (this->isConnected == true){

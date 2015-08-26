@@ -1,44 +1,64 @@
-src/BeagleBoneCode.d: ../src/BeagleBoneCode.cpp ../src/DataKeeper.h \
- ../src/CentralHub.h ../src/AStar.h ../src/Server.h ../src/RoamingBot.h \
- ../src/SensorManager.h ../src/Sensors/ADXL345.h \
- ../src/Sensors/I2CDevice.h ../src/Sensors/GY273.h \
- ../src/Sensors/IR2Y0A21.h ../src/Sensors/MPU6050.h ../src/MotorManager.h \
- ../src/Motors/Motor2Wheel.h ../src/Motors/Motor.h \
- ../src/Motors/../Pins/GPIO.h ../src/Motors/../Pins/PWM.h \
- ../src/Motors/Motor4Wheel.h ../src/Client.h
+src/BeagleBoneCode.d: ../src/BeagleBoneCode.cpp \
+ ../src/Managers/DataKeeper.h ../src/Jobs/CentralHub.h \
+ ../src/Jobs/../Managers/DataKeeper.h ../src/Jobs/../PathPlanning/AStar.h \
+ ../src/Jobs/../PathPlanning/../Managers/DataKeeper.h \
+ ../src/Jobs/../Networking/Server.h \
+ ../src/Jobs/../Networking/../Managers/DataKeeper.h \
+ ../src/Jobs/RoamingBot.h ../src/Jobs/../Managers/SensorManager.h \
+ ../src/Jobs/../Managers/DataKeeper.h \
+ ../src/Jobs/../Managers/../Sensors/ADXL345.h \
+ ../src/Jobs/../Managers/../Sensors/I2CDevice.h \
+ ../src/Jobs/../Managers/../Sensors/GY273.h \
+ ../src/Jobs/../Managers/../Sensors/IR2Y0A21.h \
+ ../src/Jobs/../Managers/../Sensors/MPU6050.h \
+ ../src/Jobs/../Managers/MotorManager.h \
+ ../src/Jobs/../Managers/../Motors/Motor2Wheel.h \
+ ../src/Jobs/../Managers/../Motors/Motor.h \
+ ../src/Jobs/../Managers/../Motors/../Pins/GPIO.h \
+ ../src/Jobs/../Managers/../Motors/../Pins/PWM.h \
+ ../src/Jobs/../Managers/../Motors/Motor4Wheel.h \
+ ../src/Jobs/../Networking/Client.h
 
-../src/DataKeeper.h:
+../src/Managers/DataKeeper.h:
 
-../src/CentralHub.h:
+../src/Jobs/CentralHub.h:
 
-../src/AStar.h:
+../src/Jobs/../Managers/DataKeeper.h:
 
-../src/Server.h:
+../src/Jobs/../PathPlanning/AStar.h:
 
-../src/RoamingBot.h:
+../src/Jobs/../PathPlanning/../Managers/DataKeeper.h:
 
-../src/SensorManager.h:
+../src/Jobs/../Networking/Server.h:
 
-../src/Sensors/ADXL345.h:
+../src/Jobs/../Networking/../Managers/DataKeeper.h:
 
-../src/Sensors/I2CDevice.h:
+../src/Jobs/RoamingBot.h:
 
-../src/Sensors/GY273.h:
+../src/Jobs/../Managers/SensorManager.h:
 
-../src/Sensors/IR2Y0A21.h:
+../src/Jobs/../Managers/DataKeeper.h:
 
-../src/Sensors/MPU6050.h:
+../src/Jobs/../Managers/../Sensors/ADXL345.h:
 
-../src/MotorManager.h:
+../src/Jobs/../Managers/../Sensors/I2CDevice.h:
 
-../src/Motors/Motor2Wheel.h:
+../src/Jobs/../Managers/../Sensors/GY273.h:
 
-../src/Motors/Motor.h:
+../src/Jobs/../Managers/../Sensors/IR2Y0A21.h:
 
-../src/Motors/../Pins/GPIO.h:
+../src/Jobs/../Managers/../Sensors/MPU6050.h:
 
-../src/Motors/../Pins/PWM.h:
+../src/Jobs/../Managers/MotorManager.h:
 
-../src/Motors/Motor4Wheel.h:
+../src/Jobs/../Managers/../Motors/Motor2Wheel.h:
 
-../src/Client.h:
+../src/Jobs/../Managers/../Motors/Motor.h:
+
+../src/Jobs/../Managers/../Motors/../Pins/GPIO.h:
+
+../src/Jobs/../Managers/../Motors/../Pins/PWM.h:
+
+../src/Jobs/../Managers/../Motors/Motor4Wheel.h:
+
+../src/Jobs/../Networking/Client.h:

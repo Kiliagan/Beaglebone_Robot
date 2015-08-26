@@ -23,9 +23,12 @@ C_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-src \
 src/Sensors \
 src/Pins \
+src/PathPlanning \
 src/Networking \
 src/Motors \
+src/Managers \
+src/Jobs \
+src \
 

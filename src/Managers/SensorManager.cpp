@@ -12,15 +12,12 @@ ADXL345 gyroSensor = ADXL345(1,0x53);
 //MPU6050 accelSensor = MPU6050(1,0x68);
 GY273 magSensor = GY273(1,0x1E);
 
-/**
- *
- */
 SensorManager::SensorManager() {
 
 }
 
 /**
- *
+ * Reads in the data from all sensors on the robot
  * @param dataKeeper
  */
 void SensorManager::readSensors(DataKeeper &dataKeeper){

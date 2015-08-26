@@ -8,8 +8,8 @@
 #ifndef MOTORMANAGER_H_
 #define MOTORMANAGER_H_
 
-#include "Motors/Motor2Wheel.h"
-#include "Motors/Motor4Wheel.h"
+#include "../Motors/Motor2Wheel.h"
+#include "../Motors/Motor4Wheel.h"
 #include "DataKeeper.h"
 
 class MotorManager {

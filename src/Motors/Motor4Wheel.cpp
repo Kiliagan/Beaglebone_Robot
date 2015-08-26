@@ -12,7 +12,7 @@
 #include "../Pins/GPIO.h"
 
 /**
- *
+ * Creates 4 wheeled robot object
  * @param pwm
  * @param wheelFrontLeft_1
  * @param wheelFrontLeft_2
@@ -38,7 +38,7 @@ Motor4Wheel::Motor4Wheel(PWM *pwm, GPIO *wheelFrontLeft_1, GPIO *wheelFrontLeft_
 }
 
 /**
- *
+ * Moves robot forward
  * @return
  */
 int Motor4Wheel::forward(){
@@ -60,7 +60,7 @@ int Motor4Wheel::forward(){
 }
 
 /**
- *
+ * Robot moves backward
  * @return
  */
 int Motor4Wheel::back(){
@@ -82,7 +82,7 @@ int Motor4Wheel::back(){
 }
 
 /**
- *
+ * Has robot turn left
  * @return
  */
 int Motor4Wheel::left(){
@@ -104,7 +104,7 @@ int Motor4Wheel::left(){
 }
 
 /**
- *
+ * Has robot turn right
  * @return
  */
 int Motor4Wheel::right(){
@@ -125,9 +125,6 @@ int Motor4Wheel::right(){
 	return 0;
 }
 
-/**
- *
- */
 Motor4Wheel::~Motor4Wheel() {
 	// TODO Auto-generated destructor stub
 }

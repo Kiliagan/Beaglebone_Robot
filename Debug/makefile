@@ -10,8 +10,11 @@ RM := rm -rf
 -include sources.mk
 -include src/Sensors/subdir.mk
 -include src/Pins/subdir.mk
+-include src/PathPlanning/subdir.mk
 -include src/Networking/subdir.mk
 -include src/Motors/subdir.mk
+-include src/Managers/subdir.mk
+-include src/Jobs/subdir.mk
 -include src/subdir.mk
 -include subdir.mk
 -include objects.mk

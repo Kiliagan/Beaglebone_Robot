@@ -35,8 +35,8 @@
 #include<netinet/in.h>
 #include<unistd.h>
 #include<iostream>
-#include "../DataKeeper.h"
-#include "../AStar.h"
+#include "../Managers/DataKeeper.h"
+#include "../PathPlanning/AStar.h"
 
 class SocketServer; //class declaration, due to circular reference problem.
 

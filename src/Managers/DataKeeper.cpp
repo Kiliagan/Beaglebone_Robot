@@ -8,7 +8,7 @@
 #include "DataKeeper.h"
 
 /**
- *
+ * Sets up all sensor data with an starting value of 0
  */
 DataKeeper::DataKeeper() {
 	accelAccelX = 0;
@@ -45,7 +45,7 @@ DataKeeper::DataKeeper() {
 }
 
 /**
- *
+ * Reads in mm distance from sensor
  * @param irDistance
  */
 void DataKeeper::setIRDistance(float irDistance){
@@ -53,7 +53,7 @@ void DataKeeper::setIRDistance(float irDistance){
 }
 
 /**
- *
+ * Reads in raw data from sensor
  * @param irRaw
  */
 void DataKeeper::setIRRaw(float irRaw){
@@ -61,7 +61,7 @@ void DataKeeper::setIRRaw(float irRaw){
 }
 
 /**
- *
+ * reads in X value from the ADXL345
  * @param gyroAccelX
  */
 void DataKeeper::setGyroAccelX(float gyroAccelX){
@@ -69,7 +69,7 @@ void DataKeeper::setGyroAccelX(float gyroAccelX){
 }
 
 /**
- *
+ * reads in Y value from the ADXL345
  * @param gyroAccelY
  */
 void DataKeeper::setGyroAccelY(float gyroAccelY){
@@ -77,7 +77,7 @@ void DataKeeper::setGyroAccelY(float gyroAccelY){
 }
 
 /**
- *
+ * reads in Z value from the ADXL345
  * @param gyroAccelZ
  */
 void DataKeeper::setGyroAccelZ(float gyroAccelZ){
@@ -85,7 +85,7 @@ void DataKeeper::setGyroAccelZ(float gyroAccelZ){
 }
 
 /**
- *
+ * reads in Roll value from the ADXL345
  * @param gyroRoll
  */
 void DataKeeper::setGyroRoll(float gyroRoll){
@@ -93,7 +93,7 @@ void DataKeeper::setGyroRoll(float gyroRoll){
 }
 
 /**
- *
+ * reads in Pitch value from the ADXL345
  * @param gyroPitch
  */
 void DataKeeper::setGyroPitch(float gyroPitch){
@@ -101,7 +101,7 @@ void DataKeeper::setGyroPitch(float gyroPitch){
 }
 
 /**
- *
+ * reads in X value from the MPU6050
  * @param accelAccelX
  */
 void DataKeeper::setAccelAccelX(float accelAccelX){
@@ -109,7 +109,7 @@ void DataKeeper::setAccelAccelX(float accelAccelX){
 }
 
 /**
- *
+ * reads in Y value from the MPU6050
  * @param accelAccelY
  */
 void DataKeeper::setAccelAccelY(float accelAccelY){
@@ -117,7 +117,7 @@ void DataKeeper::setAccelAccelY(float accelAccelY){
 }
 
 /**
- *
+ * reads in Z value from the MPU6050
  * @param accelAccelZ
  */
 void DataKeeper::setAccelAccelZ(float accelAccelZ){
@@ -125,7 +125,7 @@ void DataKeeper::setAccelAccelZ(float accelAccelZ){
 }
 
 /**
- *
+ * reads in X value from the MPU6050
  * @param accelGyroX
  */
 void DataKeeper::setAccelGyroX(float accelGyroX){
@@ -133,7 +133,7 @@ void DataKeeper::setAccelGyroX(float accelGyroX){
 }
 
 /**
- *
+ * reads in Y value from the MPU6050
  * @param accelGyroY
  */
 void DataKeeper::setAccelGyroY(float accelGyroY){
@@ -141,7 +141,7 @@ void DataKeeper::setAccelGyroY(float accelGyroY){
 }
 
 /**
- *
+ * reads in Z value from the MPU6050
  * @param accelGyroZ
  */
 void DataKeeper::setAccelGyroZ(float accelGyroZ){
@@ -149,7 +149,7 @@ void DataKeeper::setAccelGyroZ(float accelGyroZ){
 }
 
 /**
- *
+ * reads in Pitch value from the MPU6050
  * @param accelPitch
  */
 void DataKeeper::setAccelPitch(float accelPitch){
@@ -157,7 +157,7 @@ void DataKeeper::setAccelPitch(float accelPitch){
 }
 
 /**
- *
+ * reads in Roll value from the MPU6050
  * @param accelRoll
  */
 void DataKeeper::setAccelRoll(float accelRoll){
@@ -165,7 +165,7 @@ void DataKeeper::setAccelRoll(float accelRoll){
 }
 
 /**
- *
+ * reads in Yaw value from the MPU6050
  * @param accelYaw
  */
 void DataKeeper::setAccelYaw(float accelYaw){
@@ -173,7 +173,7 @@ void DataKeeper::setAccelYaw(float accelYaw){
 }
 
 /**
- *
+ * reads in X value from the HMC5883L
  * @param magX
  */
 void DataKeeper::setMagX(float magX){
@@ -181,7 +181,7 @@ void DataKeeper::setMagX(float magX){
 }
 
 /**
- *
+ * reads in Y value from the HMC5883L
  * @param magY
  */
 void DataKeeper::setMagY(float magY){
@@ -189,7 +189,7 @@ void DataKeeper::setMagY(float magY){
 }
 
 /**
- *
+ * reads in Z value from the HMC5883L
  * @param magZ
  */
 void DataKeeper::setMagZ(float magZ){
@@ -197,7 +197,7 @@ void DataKeeper::setMagZ(float magZ){
 }
 
 /**
- *
+ *  reads in X Ang value from the HMC5883L
  * @param angX
  */
 void DataKeeper::setAngX(float angX){
@@ -205,7 +205,7 @@ void DataKeeper::setAngX(float angX){
 }
 
 /**
- *
+ * reads in Y Ang value from the HMC5883L
  * @param angY
  */
 void DataKeeper::setAngY(float angY){
@@ -213,7 +213,7 @@ void DataKeeper::setAngY(float angY){
 }
 
 /**
- *
+ * reads in Z Ang value from the HMC5883L
  * @param angZ
  */
 void DataKeeper::setAngZ(float angZ){
@@ -221,7 +221,7 @@ void DataKeeper::setAngZ(float angZ){
 }
 
 /**
- *
+ * reads in Heading value from the HMC5883L
  * @param heading
  */
 void DataKeeper::setHeading(float heading){
@@ -229,7 +229,7 @@ void DataKeeper::setHeading(float heading){
 }
 
 /**
- *
+ * reads in Heading value in Degrees from the HMC5883L
  * @param headingDeg
  */
 void DataKeeper::setHeadingDeg(float headingDeg){
@@ -237,7 +237,7 @@ void DataKeeper::setHeadingDeg(float headingDeg){
 }
 
 /**
- *
+ * reads in the Path from the A* method
  * @param path
  */
 void DataKeeper::setPath(std::string path){
@@ -245,7 +245,7 @@ void DataKeeper::setPath(std::string path){
 }
 
 /**
- *
+ * reads in IP address
  * @param ip
  */
 void DataKeeper::setIP(std::string ip){
@@ -253,7 +253,7 @@ void DataKeeper::setIP(std::string ip){
 }
 
 /**
- *
+ * Reads in current X coordinate
  * @param currentX
  */
 void DataKeeper::setCurrentX(int currentX){
@@ -261,7 +261,7 @@ void DataKeeper::setCurrentX(int currentX){
 }
 
 /**
- *
+ * Reads in current Y coordinate
  * @param currentY
  */
 void DataKeeper::setCurrentY(int currentY){
@@ -269,7 +269,7 @@ void DataKeeper::setCurrentY(int currentY){
 }
 
 /**
- *
+ * Reads in destination X coordinate
  * @param destX
  */
 void DataKeeper::setDestX(int destX){
@@ -277,7 +277,7 @@ void DataKeeper::setDestX(int destX){
 }
 
 /**
- *
+ * Reads in destination Y coordinate
  * @param destY
  */
 void DataKeeper::setDestY(int destY){
@@ -285,16 +285,14 @@ void DataKeeper::setDestY(int destY){
 }
 
 /**
- *
+ * Reads in the direction the robot is facing
  * @param facing
  */
 void DataKeeper::setFacing(int facing){
 	this->facing = facing;
 }
 
-/**
- *
- */
+
 DataKeeper::~DataKeeper() {
 
 }

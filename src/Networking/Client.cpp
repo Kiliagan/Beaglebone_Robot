@@ -8,10 +8,10 @@
 #include <iostream>
 #include <sstream>
 #include "Client.h"
-#include "Networking/SocketClient.h"
+#include "SocketClient.h"
 
 /**
- *
+ * Creates a clien to look for a server on selected ip and port
  * @param ip
  * @param port
  */
@@ -20,14 +20,11 @@ Client::Client(std::string ip, int port) {
 	this->port=port;
 }
 
-/**
- *
- */
 Client::~Client() {
 }
 
 /**
- *
+ * Starts the client to talk to server on selected port.
  * @param dataKeeper
  * @param option
  */

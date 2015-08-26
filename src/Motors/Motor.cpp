@@ -16,7 +16,7 @@
 using namespace std;
 
 /**
- *
+ * Creates the Motor object when called
  * @param pwm
  */
 Motor::Motor(PWM *pwm) {
@@ -35,7 +35,7 @@ Motor::Motor(PWM *pwm) {
 }
 
 /**
- *
+ * Allows the robots directions to be controlled using a single letter
  * @param direction
  * @return
  */
@@ -61,7 +61,7 @@ int Motor::move(char direction){
 }
 	
 /**
- *
+ * Turns on the pins for driving the motors
  */
 void Motor::turnOn(){
       //Export PINS:
@@ -91,7 +91,7 @@ void Motor::turnOn(){
 }
 
 /**
- *
+ * Turns off pins for driving the motors
  */
 void Motor::turnOff(){
     	//UNEXPORT PINS
@@ -107,19 +107,24 @@ void Motor::turnOff(){
     	 	this->wheelBackRight_2->unexportGPIO();
     	}
 }
-     
+
+/**
+ * Sets the PWM on time
+ * @param speedPercentage
+ */
 void Motor::setSpeedPercent(float speedPercentage){
 	this->pwm->setDutyCycle(speedPercentage);
 	this->speedPercent = speedPercentage;
 }
 
+/**
+ * Sets the duty cycle
+ * @param period_ns
+ */
 void Motor::setDutyCyclePeriod(unsigned int period_ns){
 	this->pwm->setPeriod(period_ns);
 }
 
-/**
- *
- */
 Motor::~Motor() {
 	
 }

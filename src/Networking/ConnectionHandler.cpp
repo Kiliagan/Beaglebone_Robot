@@ -41,7 +41,7 @@
 using namespace std;
 
 /**
- *
+ * Creates the connection handler to deal with clients
  * @param parent
  * @param client
  * @param clientSocketfd
@@ -54,7 +54,7 @@ ConnectionHandler::ConnectionHandler(SocketServer *parent, sockaddr_in *client, 
 }
 
 /**
- *
+ * destroys connection handler
  */
 ConnectionHandler::~ConnectionHandler() {
 	delete this->client;
@@ -62,7 +62,7 @@ ConnectionHandler::~ConnectionHandler() {
 }
 
 /**
- *
+ * Starts up the thread
  * @param dataKeeper
  * @return
  */
@@ -72,14 +72,14 @@ int ConnectionHandler::start(){
 }
 
 /**
- *
+ * pauses thread
  */
 void ConnectionHandler::wait(){
 	(void) pthread_join(this->thread, NULL);
 }
 
 /**
- *
+ * sends a message back to client
  * @param message
  * @return
  */
@@ -95,7 +95,7 @@ int ConnectionHandler::send(std::string message){
 }
 
 /**
- *
+ * reads in data from client
  * @param size
  * @return
  */
@@ -110,7 +110,8 @@ string ConnectionHandler::receive(int size=1024){
 }
 
 /**
- *
+ * The loop that is run by the server to deal with the clients.
+ * reads in string from the server and sends back the path generated
  */
 void ConnectionHandler::threadLoop(){
     //cout << "*** Created a Connection Handler threaded Function" << endl;
@@ -136,10 +137,10 @@ void ConnectionHandler::threadLoop(){
     	   dataKeeper.setCurrentY(x);
     	   istringstream(rec.substr(8,1)) >> x;
     	   switch(x){
-    	   case 0: pathPlanner.newObstacle(dataKeeper.getCurrentX()+3, dataKeeper.getCurrentY());break;
-    	   case 1: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()-3);break;
-    	   case 2: pathPlanner.newObstacle(dataKeeper.getCurrentX()-3, dataKeeper.getCurrentY());break;
-    	   case 3: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()+3);break;
+    	   case 0: pathPlanner.newObstacle(dataKeeper.getCurrentX()+1, dataKeeper.getCurrentY());break;
+    	   case 1: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()-1);break;
+    	   case 2: pathPlanner.newObstacle(dataKeeper.getCurrentX()-1, dataKeeper.getCurrentY());break;
+    	   case 3: pathPlanner.newObstacle(dataKeeper.getCurrentX(), dataKeeper.getCurrentY()+1);break;
     	   }
        }
        usleep(2000000);

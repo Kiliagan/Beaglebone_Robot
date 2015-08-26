@@ -6,25 +6,22 @@
  */
 
 #include "Server.h"
-#include "Networking/SocketServer.h"
+#include "SocketServer.h"
 
 /**
- *
+ * Creates server listening on selected port
  * @param port
  */
 Server::Server(int port) {
 	this->port=port;
 }
 
-/**
- *
- */
 Server::~Server() {
 	// TODO Auto-generated destructor stub
 }
 
 /**
- *
+ * Starts the server to listen for connections
  * @param dataKeeper
  */
 void Server::startServer(){

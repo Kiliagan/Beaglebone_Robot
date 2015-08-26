@@ -9,10 +9,10 @@
 #define SENSORMANAGER_H_
 
 #include "DataKeeper.h"
-#include "Sensors/ADXL345.h"
-#include "Sensors/GY273.h"
-#include "Sensors/IR2Y0A21.h"
-#include "Sensors/MPU6050.h"
+#include "../Sensors/ADXL345.h"
+#include "../Sensors/GY273.h"
+#include "../Sensors/IR2Y0A21.h"
+#include "../Sensors/MPU6050.h"
 
 class SensorManager {
 public:

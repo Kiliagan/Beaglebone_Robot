@@ -15,7 +15,7 @@
 using namespace std;
 
 /**
- *
+ * Creates object to control a PWM pin
  * @param pinName
  */
 PWM::PWM(string pinName) {
@@ -26,7 +26,7 @@ PWM::PWM(string pinName) {
 }
 
 /**
- *
+ * Set the cycle period for the PWM
  * @param period_ns
  * @return
  */
@@ -35,7 +35,7 @@ int PWM::setPeriod(unsigned int period_ns){
 }
 
 /**
- *
+ * returns the cycle period
  * @return
  */
 unsigned int PWM::getPeriod(){
@@ -43,7 +43,7 @@ unsigned int PWM::getPeriod(){
 }
 
 /**
- *
+ * converts the period to a frequency
  * @param period_ns
  * @return
  */
@@ -53,7 +53,7 @@ float PWM::period_nsToFrequency(unsigned int period_ns){
 }
 
 /**
- *
+ * converts frequency to a period
  * @param frequency_hz
  * @return
  */
@@ -63,7 +63,7 @@ unsigned int PWM::frequencyToPeriod_ns(float frequency_hz){
 }
 
 /**
- *
+ * sets frequency
  * @param frequency_hz
  * @return
  */
@@ -72,7 +72,7 @@ int PWM::setFrequency(float frequency_hz){
 }
 
 /**
- *
+ * returns a frequency
  * @return
  */
 float PWM::getFrequency(){
@@ -80,7 +80,7 @@ float PWM::getFrequency(){
 }
 
 /**
- *
+ * sets the duty cycle
  * @param duty_ns
  * @return
  */
@@ -89,7 +89,7 @@ int PWM::setDutyCycle(unsigned int duty_ns){
 }
 
 /**
- *
+ * sets the duty cycle based on speed percentagy
  * @param percentage
  * @return
  */
@@ -102,7 +102,7 @@ int PWM::setDutyCycle(float percentage){
 }
 
 /**
- *
+ * returns the duty cycle
  * @return
  */
 unsigned int PWM::getDutyCycle(){
@@ -110,7 +110,7 @@ unsigned int PWM::getDutyCycle(){
 }
 
 /**
- *
+ * gets duty cylce on percentage
  * @return
  */
 float PWM::getDutyCyclePercent(){
@@ -120,7 +120,7 @@ float PWM::getDutyCyclePercent(){
 }
 
 /**
- *
+ * sets the pins polarity
  * @param polarity
  * @return
  */
@@ -129,7 +129,7 @@ int PWM::setPolarity(PWM::POLARITY polarity){
 }
 
 /**
- *
+ * reverse the polarity
  */
 void PWM::invertPolarity(){
 	if (this->getPolarity()==PWM::ACTIVE_LOW) this->setPolarity(PWM::ACTIVE_HIGH);
@@ -137,7 +137,7 @@ void PWM::invertPolarity(){
 }
 
 /**
- *
+ * returns the pins polarity
  * @return
  */
 PWM::POLARITY PWM::getPolarity(){
@@ -146,7 +146,7 @@ PWM::POLARITY PWM::getPolarity(){
 }
 
 /**
- *
+ * sets make signal out
  * @param analogMax
  * @return
  */
@@ -157,7 +157,7 @@ int PWM::calibrateAnalogMax(float analogMax){ //must be between 3.2 and 3.4
 }
 
 /**
- *
+ * writes analogue data to the pin
  * @param voltage
  * @return
  */
@@ -170,7 +170,7 @@ int PWM::analogWrite(float voltage){
 }
 
 /**
- *
+ * turns on pin
  * @return
  */
 int PWM::run(){
@@ -178,7 +178,7 @@ int PWM::run(){
 }
 
 /**
- *
+ * checks if pin is on
  * @return
  */
 bool PWM::isRunning(){
@@ -187,7 +187,7 @@ bool PWM::isRunning(){
 }
 
 /**
- *
+ * turns off the pin
  * @return
  */
 int PWM::stop(){

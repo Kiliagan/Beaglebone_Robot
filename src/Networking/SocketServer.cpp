@@ -37,7 +37,7 @@
 using namespace std;
 
 /**
- *
+ * creastes server socket
  * @param portNumber
  */
 SocketServer::SocketServer(int portNumber) {
@@ -49,7 +49,7 @@ SocketServer::SocketServer(int portNumber) {
 }
 
 /**
- *
+ * sets server to listen for a connection
  * @return
  */
 int SocketServer::listen(){
@@ -79,7 +79,7 @@ int SocketServer::listen(){
 }
 
 /**
- *
+ * sets up a thread to constantly listen for connection
  * @param dataKeeper
  * @return
  */
@@ -116,7 +116,7 @@ int SocketServer::threadedListen(){
 }
 
 /**
- *
+ * sends a message to client
  * @param message
  * @return
  */
@@ -131,6 +131,11 @@ int SocketServer::send(std::string message){
     return 0;
 }
 
+/**
+ * receives string from the server
+ * @param size
+ * @return
+ */
 string SocketServer::receive(int size=1024){
     char readBuffer[size];
     int n = read(this->clientSocketfd, readBuffer, sizeof(readBuffer));
@@ -141,7 +146,7 @@ string SocketServer::receive(int size=1024){
 }
 
 /**
- *
+ * signals when client has disconnected
  * @param connection
  */
 void SocketServer::notifyHandlerDeath(ConnectionHandler *connection){
@@ -156,7 +161,7 @@ void SocketServer::notifyHandlerDeath(ConnectionHandler *connection){
 }
 
 /**
- *
+ * destroys socket
  */
 SocketServer::~SocketServer() {
 	close(this->socketfd);

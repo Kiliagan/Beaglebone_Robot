@@ -8,9 +8,9 @@
 #ifndef CENTRALHUB_H_
 #define CENTRALHUB_H_
 
-#include "DataKeeper.h"
-#include "AStar.h"
-#include "Server.h"
+#include "../Managers/DataKeeper.h"
+#include "../PathPlanning/AStar.h"
+#include "../Networking/Server.h"
 
 class CentralHub {
 public:

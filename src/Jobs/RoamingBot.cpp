@@ -12,7 +12,7 @@
 using namespace std;
 
 /**
- *
+ * Sets up the directional coordinates
  */
 RoamingBot::RoamingBot() {
 	UP = 0;
@@ -22,14 +22,11 @@ RoamingBot::RoamingBot() {
 
 }
 
-/**
- *
- */
 RoamingBot::~RoamingBot() {
 }
 
 /**
- *
+ * It controls the robots turning to the desired direction.
  * @param dataKeeper
  * @param sensorManager
  * @param motorManager
@@ -79,7 +76,9 @@ void RoamingBot::direction(DataKeeper &dataKeeper, SensorManager &sensorManager,
 }
 
 /**
- *
+ * Controls the robot as in navigates the area.
+ * It allow the robot to detect object.
+ * Has the robot talk to the server to path plan.
  * @param dataKeeper
  * @param wheels
  */
@@ -107,7 +106,8 @@ void RoamingBot::start(DataKeeper &dataKeeper, int wheels){
 		motorManager.forward();
 		i++;
 		sensorManager.readSensors(dataKeeper);
-		if(dataKeeper.getIRDistance() < 100){
+		// Detection currently doesn't work 100% of the time
+		if(dataKeeper.getIRDistance() < 50){
 			client.startClient(dataKeeper, 2);
 			client.startClient(dataKeeper, 1);
 			path = dataKeeper.getPath();

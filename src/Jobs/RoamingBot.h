@@ -8,11 +8,11 @@
 #ifndef ROAMINGBOT_H_
 #define ROAMINGBOT_H_
 
-#include "SensorManager.h"
-#include "DataKeeper.h"
-#include "MotorManager.h"
-#include "AStar.h"
-#include "Client.h"
+#include "../Managers/SensorManager.h"
+#include "../Managers/DataKeeper.h"
+#include "../Managers/MotorManager.h"
+#include "../PathPlanning/AStar.h"
+#include "../Networking/Client.h"
 
 class RoamingBot {
 private:

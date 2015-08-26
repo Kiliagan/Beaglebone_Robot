@@ -10,14 +10,14 @@
 #include <unistd.h>
 #include <math.h>
 
-#include "DataKeeper.h"
-#include "CentralHub.h"
-#include "RoamingBot.h"
+#include "Managers/DataKeeper.h"
+#include "Jobs/CentralHub.h"
+#include "Jobs/RoamingBot.h"
 
 using namespace std;
 
 /**
- *
+ * Main function that sees which job the robot is to do
  * @param argc
  * @param argv
  * @return
